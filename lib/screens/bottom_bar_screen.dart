@@ -5,6 +5,7 @@ import 'feeds_screen.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
 import 'user_info_screen.dart';
+import '../constant/my_icons.dart';
 
 class BottomBarScreen extends StatefulWidget {
   const BottomBarScreen({Key? key}) : super(key: key);
@@ -61,13 +62,13 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.home,
+                    MyIcons.home,
                   ),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.rss_feed,
+                    MyIcons.rss,
                   ),
                   label: 'Feeds',
                 ),
@@ -78,13 +79,13 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.shopping_cart,
+                    MyIcons.cart
                   ),
                   label: 'Your Cart',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.person,
+                    MyIcons.userInfo,
                   ),
                   label: 'Your Profile',
                 ),
