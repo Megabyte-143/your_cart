@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:your_cart/screens/bottom_bar_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,8 +13,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Center(child: Text("hello")),
+      home: BottomBarScreen(),
     );
   }
 }
