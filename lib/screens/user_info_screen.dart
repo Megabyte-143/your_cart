@@ -96,7 +96,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                       ],
                     ),
                     background: Image(
-                      image: AssetImage('lib/assets/images/user.png'),
+                      image: AssetImage('assets/images/user.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
