@@ -5,6 +5,7 @@ import 'feeds_screen.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
 import 'user_info_screen.dart';
+
 import '../constant/my_icons.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -79,7 +80,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    MyIcons.cart
+                    MyIcons.cart,
                   ),
                   label: 'Your Cart',
                 ),
