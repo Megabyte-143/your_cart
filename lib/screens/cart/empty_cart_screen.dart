@@ -15,26 +15,26 @@ class EmptyCartScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(top: 50),
+          margin: const EdgeInsets.only(top: 50),
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.4,
-          child: Image(
+          child: const Image(
             image: AssetImage('assets/images/emptycart.png'),
             alignment: Alignment.center,
             fit: BoxFit.cover,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
-        Text(
+        const Text(
           'Your Cart Is Empty',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Text(
@@ -47,7 +47,7 @@ class EmptyCartScreen extends StatelessWidget {
                 : ColorsConsts.subTitle,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
@@ -57,18 +57,18 @@ class EmptyCartScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           child: RaisedButton(
-            child: Text(
+            onPressed: null,
+            color: ColorsConsts.backgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
               'Shop Now',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
-            ),
-            onPressed: null,
-            color: ColorsConsts.backgroundColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
             ),
           ),
         ),

@@ -42,14 +42,14 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               flexibleSpace: LayoutBuilder(builder: (ctx, constraints) {
                 top = constraints.biggest.height;
                 return Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
                         Colors.black,
                         Colors.white,
                       ],
-                      begin: const FractionalOffset(0.0, 0.0),
-                      end: const FractionalOffset(1.0, 0.0),
+                      begin: FractionalOffset(0.0, 0.0),
+                      end:  FractionalOffset(1.0, 0.0),
                       stops: [0.0, 1.0],
                       tileMode: TileMode.clamp,
                     ),
@@ -62,16 +62,16 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                       children: [
                         AnimatedOpacity(
                           opacity: top <= 100 ? 1.0 : 0.0,
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           child: Row(
                             children: <Widget>[
-                              SizedBox(
+                              const SizedBox(
                                 width: 12,
                               ),
                               Container(
                                 height: kToolbarHeight / 3,
                                 width: kToolbarHeight / 1.8,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
@@ -80,7 +80,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 12,
                               ),
                               const Text(
@@ -95,7 +95,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         )
                       ],
                     ),
-                    background: Image(
+                    background: const Image(
                       image: AssetImage('assets/images/user.png'),
                       fit: BoxFit.cover,
                     ),
@@ -109,10 +109,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
+                    padding: const EdgeInsets.all(10),
                     child: UserInfo().userTitle('User Information'),
-                    padding: EdgeInsets.all(10),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 2,
                   ),
                   UserInfo().userTitleTile('Email', 'Sub-email', 0),
@@ -124,10 +124,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   UserInfo().userTitleTile('Watch Later', 'Sub-email', 3),
                   UserInfo().userTitleTile('Watch Later', 'Sub-email', 3),
                   Padding(
+                    padding: const EdgeInsets.all(10),
                     child: UserInfo().userTitle('App Settings'),
-                    padding: EdgeInsets.all(10),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 2,
                   ),
                   ListTileSwitch(
@@ -140,7 +140,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     switchActiveColor: Colors.black,
                     switchInactiveColor: Colors.grey,
                     title: const Text('Dark Theme'),
-                    leading: Icon(Icons.dark_mode),
+                    leading: const Icon(Icons.dark_mode),
                   ),
                   UserInfo().userTitleTile('Logout', 'Sub-email', 4),
                 ],

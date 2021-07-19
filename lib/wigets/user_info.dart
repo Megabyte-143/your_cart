@@ -18,7 +18,7 @@ class UserInfo extends StatelessWidget {
 
   Widget userTitle(String userTitle) {
     return Text(userTitle,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 24,
           fontStyle: FontStyle.italic,
           fontWeight: FontWeight.bold,
@@ -35,14 +35,14 @@ class UserInfo extends StatelessWidget {
 
   Widget userInfoCam(ScrollController scrollController) {
     scrollController = scrollController;
-    final double defaultTopMargin = 200 - 4;
-    final double scaleStart = 160;
-    final double scaleEnd = scaleStart / 2;
+    const double defaultTopMargin = 200 - 4;
+    const double scaleStart = 160;
+    const double scaleEnd = scaleStart / 2;
 
     double top = defaultTopMargin;
     double scale = 1;
     if (scrollController.hasClients) {
-      double offset = scrollController.offset;
+      final double offset = scrollController.offset;
       top -= offset;
       if (offset < defaultTopMargin - scaleStart) {
         scale = 1;
@@ -54,21 +54,21 @@ class UserInfo extends StatelessWidget {
     }
 
     return Positioned(
+      top: top,
+      right: 16,
       child: Transform(
         transform: Matrix4.identity()..scale(scale),
         alignment: Alignment.center,
-        child: FloatingActionButton(
+        child: const FloatingActionButton(
           heroTag: 'btn1',
           onPressed: null,
+          backgroundColor: Colors.black,
           child: Icon(
             Icons.camera_alt_outlined,
             color: Colors.white,
           ),
-          backgroundColor: Colors.black,
         ),
       ),
-      top: top,
-      right: 16,
     );
   }
 }
