@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constant/my_icons.dart';
+
 import 'cart/cart_screen.dart';
 import 'feeds_screen.dart';
 import 'home_screen.dart';
@@ -24,7 +25,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       {'page': const HomeScreen()},
       {'page': const FeedsScreen()},
       {'page': const SearchScreen()},
-      {'page': const CartScreen()},
+      {'page':  CartScreen()},
       {'page': UserInfoScreen()},
     ];
     super.initState();

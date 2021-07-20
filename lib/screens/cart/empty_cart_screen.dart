@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/constant/colors.dart';
+import '../../constant/colors.dart';
 
-import '/provider/dark_theme_provider.dart';
+import '../../provider/dark_theme_provider.dart';
 
 class EmptyCartScreen extends StatelessWidget {
   //const EmptyCartScreen({Key? key}) : super(key: key);
