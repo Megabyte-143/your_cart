@@ -49,7 +49,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         Colors.white,
                       ],
                       begin: FractionalOffset(0.0, 0.0),
-                      end:  FractionalOffset(1.0, 0.0),
+                      end: FractionalOffset(1.0, 0.0),
                       stops: [0.0, 1.0],
                       tileMode: TileMode.clamp,
                     ),
@@ -69,14 +69,15 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                                 width: 12,
                               ),
                               Container(
-                                height: kToolbarHeight / 3,
-                                width: kToolbarHeight / 1.8,
+                                height: kToolbarHeight / 2,
+                                width: kToolbarHeight / 2,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: AssetImage(
-                                        'lib/assets/images/user.png'),
+                                      'assets/images/user.png',
+                                    ),
                                   ),
                                 ),
                               ),
