@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../provider/dark_theme_provider.dart';
 
-import '../../wigets/full_cart/bottom_sheet.dart' as bottom_sheet;
-import '../../wigets/full_cart/full_cart_icons.dart';
-import '../../wigets/full_cart/full_cart_items.dart';
+import '../../wigets/full_cart_screen/bottom_sheet.dart' as bottom_sheet;
+import '../../wigets/full_cart_screen/full_cart_icons.dart';
+import '../../wigets/full_cart_screen/full_cart_items.dart';
 
 class FullCartScreen extends StatefulWidget {
   const FullCartScreen({Key? key}) : super(key: key);

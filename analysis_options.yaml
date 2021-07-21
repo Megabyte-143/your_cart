@@ -31,3 +31,7 @@ linter:
     avoid_positional_boolean_parameters: false
 
     avoid_unnecessary_containers: false
+
+    avoid_async_functions_that_return_void: false
+
+    avoid_'print'_calls_in_production_code: false

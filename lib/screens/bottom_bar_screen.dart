@@ -18,13 +18,13 @@ class BottomBarScreen extends StatefulWidget {
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
   List<Map<String, Widget>> _pages = [{}];
-  int _selectedPageIndex = 0;
+  int _selectedPageIndex = 1;
 
   @override
   void initState() {
     _pages = [
       {'page': const HomeScreen()},
-      {'page': const FeedsScreen()},
+      {'page':  FeedsScreen()},
       {'page': const SearchScreen()},
       {'page':  CartScreen()},
       {'page': UserInfoScreen()},

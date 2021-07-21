@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class FeedsScreen extends StatelessWidget {
-  const FeedsScreen({Key? key}) : super(key: key);
+import '../wigets/feeds_screen/feeds_screen_items.dart';
 
+class FeedsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(),
       body: Center(
-        child: Text("Feeds Screen"),
+        child: FeedsScreenItems(),
       ),
     );
   }

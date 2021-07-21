@@ -28,7 +28,7 @@ class BottomSheet extends StatelessWidget {
                           Colors.yellow,
                         ]
                       : [Colors.white38, Colors.purpleAccent],
-                  stops: [0, 0.9],
+                  stops: const [0, 0.9],
                 ),
                 borderRadius: BorderRadius.circular(32),
               ),
