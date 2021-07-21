@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/dark_theme_provider.dart';
 
 import '../constant/my_icons.dart';
 
-import 'cart/cart_screen.dart';
+import '../screens/cart/cart_screen.dart';
 
 import 'feeds_screen.dart';
 import 'home_screen.dart';
@@ -24,9 +27,9 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
   void initState() {
     _pages = [
       {'page': const HomeScreen()},
-      {'page':  FeedsScreen()},
+      {'page': FeedsScreen()},
       {'page': const SearchScreen()},
-      {'page':  CartScreen()},
+      {'page': CartScreen()},
       {'page': UserInfoScreen()},
     ];
     super.initState();
@@ -40,6 +43,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomAppBar(
@@ -58,7 +62,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
             child: BottomNavigationBar(
               currentIndex: _selectedPageIndex,
               onTap: _submitPageIndex,
-              selectedItemColor: Colors.black,
+              selectedItemColor: darkTheme ? Colors.yellow : Colors.black,
               unselectedItemColor: Colors.grey,
               type: BottomNavigationBarType.shifting,
               items: [
