@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'cart_screen.dart';
+import '../constant/my_icons.dart';
+
+import 'cart/cart_screen.dart';
+
 import 'feeds_screen.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
 import 'user_info_screen.dart';
-
-import '../constant/my_icons.dart';
 
 class BottomBarScreen extends StatefulWidget {
   const BottomBarScreen({Key? key}) : super(key: key);
@@ -16,16 +17,16 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  List<Map<String, dynamic>> _pages = [{}];
-  int _selectedPageIndex = 0;
+  List<Map<String, Widget>> _pages = [{}];
+  int _selectedPageIndex = 1;
 
   @override
   void initState() {
     _pages = [
-      {'page': HomeScreen()},
-      {'page': FeedsScreen()},
-      {'page': SearchScreen()},
-      {'page': CartScreen()},
+      {'page': const HomeScreen()},
+      {'page':  FeedsScreen()},
+      {'page': const SearchScreen()},
+      {'page':  CartScreen()},
       {'page': UserInfoScreen()},
     ];
     super.initState();
@@ -42,7 +43,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     return Scaffold(
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 1,
         clipBehavior: Clip.antiAlias,
         elevation: 5,
@@ -73,7 +74,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                   ),
                   label: 'Feeds',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(null),
                   activeIcon: null,
                   label: 'Search',
@@ -107,12 +108,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
           hoverColor: Colors.black,
           backgroundColor: Colors.black,
           elevation: 5,
-          child: Icon(Icons.search),
           onPressed: () {
             setState(() {
               _selectedPageIndex = 2;
             });
           },
+          child: const Icon(Icons.search),
         ),
       ),
     );
