@@ -23,7 +23,7 @@ class _FeedsScreenItemsState extends State<FeedsScreenItems> {
       height: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: darkTheme ? Colors.grey.shade900 : Colors.yellow.shade200,
+        color: darkTheme ? Colors.grey.shade800 : Colors.yellow.shade200,
       ),
       child: Column(
         children: [

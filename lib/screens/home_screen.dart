@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:backdrop/backdrop.dart';
+import 'package:flutter/material.dart';
 
 import '../../wigets/home_screen/home_screen_carousel.dart';
+import '../../wigets/home_screen/home_screen_popular.dart';
+import '../../wigets/home_screen/home_screen_swiper.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,17 +11,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
+      frontLayerBackgroundColor: Theme.of(context).backgroundColor,
       headerHeight: MediaQuery.of(context).size.height * 0.5,
       backLayer: Center(
         child: Text('Back Screen'),
       ),
-      frontLayer: HomeScreenCarousel(),
       appBar: BackdropAppBar(
-        title: Text(
+        title: const Text(
           "Home",
         ),
-        leading: BackdropToggleButton(icon: AnimatedIcons.home_menu),
-        actions: [
+        leading: const BackdropToggleButton(icon: AnimatedIcons.home_menu),
+        actions: const [
           IconButton(
             onPressed: null,
             icon: CircleAvatar(
@@ -37,7 +39,7 @@ class HomeScreen extends StatelessWidget {
         flexibleSpace: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.25,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.yellow,
@@ -47,6 +49,13 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      frontLayer: Column(
+        children:  const [
+          HomeScreenCarousel(),
+          HomeScreenPopular(),
+          HomeScreenSwiper(),
+        ],
       ),
     );
   }

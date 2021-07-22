@@ -36,6 +36,7 @@ dependencies:
   badges: ^2.0.1
   backdrop: ^0.6.2
   carousel_slider: ^4.0.0
+  card_swiper: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +61,13 @@ flutter:
     - assets/images/carousel2.jpeg
     - assets/images/carousel3.jpg
     - assets/images/carousel4.png
+    - assets/images/addidas.jpg
+    - assets/images/apple.jpg
+    - assets/images/Dell.jpg
+    - assets/images/h&m.jpg
+    - assets/images/Huawei.jpg
+    - assets/images/nike.jpg
+    - assets/images/samsung.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -21,7 +21,7 @@ class _HomeScreenCarouselState extends State<HomeScreenCarousel> {
     return Container(
       width: double.infinity,
       height: 250,
-      decoration: BoxDecoration(color:  Colors.black),
+      decoration: const BoxDecoration(color:  Colors.black),
       child: CarouselSlider(
 
         options: CarouselOptions(
