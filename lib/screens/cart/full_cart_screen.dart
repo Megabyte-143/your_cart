@@ -43,6 +43,7 @@ class _FullCartScreenState extends State<FullCartScreen> {
           )
         ],
       ),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
         margin: const EdgeInsets.only(bottom: 60),
         child: ListView.builder(

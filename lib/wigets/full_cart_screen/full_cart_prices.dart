@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class FullCartPrices extends StatelessWidget {
   //const FullCartPrices({ Key? key }) : super(key: key);
 
+  const FullCartPrices(this.price, this.priceValue, this.colorData);
+
   final String price;
   final double priceValue;
   final Color colorData;
 
-  const FullCartPrices(this.price, this.priceValue, this.colorData);
 
   @override
   Widget build(BuildContext context) {
