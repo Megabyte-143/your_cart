@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeScreenPopular extends StatelessWidget {
-  const HomeScreenPopular({Key? key}) : super(key: key);
+class HomeScreenPopularText extends StatelessWidget {
+  const HomeScreenPopularText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 
-class HomeScreenSwiper extends StatelessWidget {
-  const HomeScreenSwiper({Key? key}) : super(key: key);
+class HomeScreenPopularSwiper extends StatelessWidget {
+  const HomeScreenPopularSwiper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,10 @@ class HomeScreenSwiper extends StatelessWidget {
       height: 290,
       width: MediaQuery.of(context).size.width * 0.95,
       child: Swiper(
+          layout: SwiperLayout.TINDER,        autoplay: true,
           itemCount: _swiperImges.length,
+          itemWidth: MediaQuery.of(context).size.width * 0.95,
+          itemHeight: 290,
           itemBuilder: (ctx, i) {
             return Container(
               padding: EdgeInsets.all(3),

@@ -68,6 +68,14 @@ flutter:
     - assets/images/Huawei.jpg
     - assets/images/nike.jpg
     - assets/images/samsung.jpg
+    - assets/images/CatBeauty.jpg
+    - assets/images/CatClothes.jpg
+    - assets/images/CatFurniture.jpg
+    - assets/images/CatLaptops.png
+    - assets/images/CatPhones.png
+    - assets/images/CatShoes.jpg
+    - assets/images/CatWatches.jpg
+    
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

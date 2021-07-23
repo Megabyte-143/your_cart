@@ -1,9 +1,11 @@
 import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 
-import '../../wigets/home_screen/home_screen_carousel.dart';
-import '../../wigets/home_screen/home_screen_popular.dart';
-import '../../wigets/home_screen/home_screen_swiper.dart';
+import '../wigets/home_screen/categories.dart';
+import '../wigets/home_screen/categories_text.dart';
+import '../wigets/home_screen/carousel.dart';
+import '../wigets/home_screen/popular_text.dart';
+import '../wigets/home_screen/popular.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -39,10 +41,10 @@ class HomeScreen extends StatelessWidget {
         flexibleSpace: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.25,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.yellow,
+                Colors.yellow.shade500,
                 Colors.white70,
               ],
               stops: [0, 1],
@@ -50,12 +52,26 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      frontLayer: Column(
-        children:  const [
-          HomeScreenCarousel(),
-          HomeScreenPopular(),
-          HomeScreenSwiper(),
-        ],
+      frontLayer: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HomeScreenCarousel(),
+            HomeScreenCategoriesText(),
+            Container(
+             // color: Colors.yellow,
+              height: 270,
+              width: double.infinity,
+              child: ListView.builder(
+                itemBuilder: (ctx, i) => HomeScreenCategories(i),
+                itemCount: 7,
+                scrollDirection: Axis.horizontal,
+              ),
+            ),
+            HomeScreenPopularText(),
+            HomeScreenPopularSwiper(),
+          ],
+        ),
       ),
     );
   }
