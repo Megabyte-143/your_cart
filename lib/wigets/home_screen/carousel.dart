@@ -20,20 +20,24 @@ class _HomeScreenCarouselState extends State<HomeScreenCarousel> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+     
       height: 250,
-      decoration: const BoxDecoration(color:  Colors.black),
+      // decoration: const BoxDecoration(color: Colors.black),
       child: CarouselSlider(
-
         options: CarouselOptions(
           autoPlay: true,
           disableCenter: true,
           enlargeCenterPage: true,
-
         ),
         items: _carouselImages
             .map((i) => Container(
+                  
                   child: Center(
-                    child: Image.asset(i,fit: BoxFit.fill,),
+                    
+                    child: Image.asset(
+                      i,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ))
             .toList(),
