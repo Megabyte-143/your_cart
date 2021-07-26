@@ -17,7 +17,7 @@ class HomeScreenPopularSwiper extends StatelessWidget {
     ];
 
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 290,
       width: MediaQuery.of(context).size.width * 0.95,
       child: Swiper(
@@ -27,7 +27,7 @@ class HomeScreenPopularSwiper extends StatelessWidget {
           itemHeight: 290,
           itemBuilder: (ctx, i) {
             return Container(
-              padding: EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(

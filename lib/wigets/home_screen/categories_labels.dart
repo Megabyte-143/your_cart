@@ -23,11 +23,11 @@ class HomeScreenCategoriesLabels extends StatelessWidget {
       right: 10,
       child: Container(
         height: 50,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         color: darkTheme ? Colors.black38 : Colors.white24,
         child: Text(
           _categories[index]['category'].toString(),
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),

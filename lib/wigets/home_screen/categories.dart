@@ -5,7 +5,7 @@ import 'categories_labels.dart';
 class HomeScreenCategories extends StatelessWidget {
   //const HomeScreenCategories({Key? key}) : super(key: key);
 
-  HomeScreenCategories(this.index);
+  const HomeScreenCategories(this.index);
   final int index;
 
   @override
@@ -55,7 +55,7 @@ class HomeScreenCategories extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 0),
+              margin: const EdgeInsets.only( left: 10, right: 10, bottom: 0),
             ),
             HomeScreenCategoriesLabels(categories: _categories, index: index)
           ],

@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../provider/dark_theme_provider.dart';
 
-class HomeScreenCategoriesText extends StatelessWidget {
-  const HomeScreenCategoriesText({Key? key}) : super(key: key);
+class HomeScreenPopularProductsText extends StatelessWidget {
+  const HomeScreenPopularProductsText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,8 @@ class HomeScreenCategoriesText extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        "Categories",
+        
+        "Popular Products",
         style: TextStyle(
           color: darkTheme ? Colors.white : Colors.black,
           fontSize: 20,
