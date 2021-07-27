@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:your_cart/screens/inner_screen.dart';
 
 class HomeScreenPopularSwiper extends StatelessWidget {
   const HomeScreenPopularSwiper({Key? key}) : super(key: key);
@@ -21,7 +22,13 @@ class HomeScreenPopularSwiper extends StatelessWidget {
       height: 290,
       width: MediaQuery.of(context).size.width * 0.95,
       child: Swiper(
-          layout: SwiperLayout.TINDER,        autoplay: true,
+          onTap: (index) {
+            Navigator.of(context).pushNamed(InnerScreen.routeName, arguments: {
+              index,
+            });
+          },
+          layout: SwiperLayout.TINDER,
+          autoplay: true,
           itemCount: _swiperImges.length,
           itemWidth: MediaQuery.of(context).size.width * 0.95,
           itemHeight: 290,

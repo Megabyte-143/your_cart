@@ -6,6 +6,7 @@ import './constant/theme_data.dart';
 import './provider/dark_theme_provider.dart';
 
 import './screens/bottom_bar_screen.dart';
+import './screens/inner_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,6 +45,9 @@ class _MyAppState extends State<MyApp> {
             title: 'Flutter Demo',
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             home: const BottomBarScreen(),
+            routes: {
+              InnerScreen.routeName: (ctx) => InnerScreen(),
+            },
           );
         },
       ),
