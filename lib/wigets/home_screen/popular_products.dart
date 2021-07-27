@@ -83,8 +83,8 @@ class HomeScreenPopularProducts extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const[
-                    Text(
+                  children:  [
+                   const Text(
                       'Description',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -92,14 +92,17 @@ class HomeScreenPopularProducts extends StatelessWidget {
                         fontSize: 14,
                       ),
                     ),
-                    Text(
-                      'vssdz',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey,
-                        fontSize: 14,
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                         return print("POPULAR ADD TO CART");
+                        },
+                        child: const Icon(
+                          Icons.add_shopping_cart_outlined,
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ],
