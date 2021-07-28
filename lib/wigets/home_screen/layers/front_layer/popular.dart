@@ -28,10 +28,10 @@ class HomeScreenPopularSwiper extends StatelessWidget {
               index,
             });
           },
-          layout: SwiperLayout.TINDER,
+          layout: SwiperLayout.DEFAULT,
           autoplay: true,
           itemCount: _swiperImges.length,
-          itemWidth: MediaQuery.of(context).size.width * 0.95,
+          itemWidth: MediaQuery.of(context).size.width * 0.5,
           itemHeight: 290,
           itemBuilder: (ctx, i) {
             return Container(

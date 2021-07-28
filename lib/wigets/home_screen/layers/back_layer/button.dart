@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class BackLayerButton extends StatelessWidget {
-  BackLayerButton(
+  const BackLayerButton(
     this.text,
     this.route,
     this.iconData,
   );
   final String text;
   final IconData iconData;
-  VoidCallback route;
+  final VoidCallback route;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class BackLayerButton extends StatelessWidget {
       child: Container(
         width: double.infinity,
         //color: Colors.yellow,
-        margin: EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -26,7 +26,7 @@ class BackLayerButton extends StatelessWidget {
                 text,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Icon(iconData),

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/constant/my_icons.dart';
 
-import '../../../../provider/dark_theme_provider.dart';
+import '../../constant/my_icons.dart';
 
-import '../../../../screens/cart/cart_screen.dart';
-import '../../../../screens/feeds_screen.dart';
+import '../../provider/dark_theme_provider.dart';
 
-import 'button.dart';
-import 'user_image.dart';
+import '../../wigets/home_screen/layers/back_layer/button.dart';
+import '../../wigets/home_screen/layers/back_layer/user_image.dart';
+
+import '../cart/cart_screen.dart';
+
+import '../feeds_screen.dart';
+
+import '../wishlist/wishlist_screen.dart';
 
 class HomeScreenBackLayer extends StatelessWidget {
   const HomeScreenBackLayer({Key? key}) : super(key: key);
@@ -27,10 +31,10 @@ class HomeScreenBackLayer extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
+                const Center(
                   child: BackLayerUserImage(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Center(
@@ -55,7 +59,7 @@ class HomeScreenBackLayer extends StatelessWidget {
                         BackLayerButton(
                           'Wishlist',
                           () {
-                            _routeName(context, FeedsScreen.routeName);
+                            _routeName(context, WishlistScreen.routename);
                           },
                           MyIcons.wishList,
                         ),

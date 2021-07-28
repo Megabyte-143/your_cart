@@ -15,11 +15,11 @@ class BackLayerUserImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Colors.yellow.shade50,
       ),
-      margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       child: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
+          image: const DecorationImage(
             image: AssetImage(
               'assets/images/user.png',
             ),
