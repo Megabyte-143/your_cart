@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '/wigets/home_screen/carousel.dart';
-import '/wigets/home_screen/categories.dart';
-import '/wigets/home_screen/categories_text.dart';
-import '/wigets/home_screen/popular.dart';
-import '/wigets/home_screen/popular_products.dart';
-import '/wigets/home_screen/popular_products_text.dart';
-import '/wigets/home_screen/popular_text.dart';
+import 'carousel.dart';
+import 'categories.dart';
+import 'categories_text.dart';
+import 'popular.dart';
+import 'popular_products.dart';
+import 'popular_products_text.dart';
+import 'popular_text.dart';
+
 
 class HomeScreenFrontLayer extends StatefulWidget {
   const HomeScreenFrontLayer({Key? key}) : super(key: key);

@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:backdrop/backdrop.dart';
+import 'package:flutter/material.dart';
 
-import '../wigets/home_screen/layers/back_layer.dart';
-import '../wigets/home_screen/layers/front_layer.dart';
+import '../wigets/home_screen/layers/back_layer/back_layer.dart';
+import '../wigets/home_screen/layers/front_layer/front_layer.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackdropScaffold(
       frontLayerBackgroundColor: Theme.of(context).backgroundColor,
-      headerHeight: MediaQuery.of(context).size.height * 0.5,
+      headerHeight: MediaQuery.of(context).size.height * 0.45,
       backLayer: HomeScreenBackLayer(),
       appBar: BackdropAppBar(
         title: const Text(
