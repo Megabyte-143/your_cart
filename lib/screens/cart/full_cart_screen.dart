@@ -21,7 +21,7 @@ class _FullCartScreenState extends State<FullCartScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:
-            themeChange.darkTheme ? Colors.grey.shade200 : Colors.black,
+            themeChange.darkTheme ? Colors.grey.shade200 : Colors.black38,
         title: Text(
           'Your Cart',
           style: TextStyle(

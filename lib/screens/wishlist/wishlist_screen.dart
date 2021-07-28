@@ -9,6 +9,6 @@ class WishlistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List cartItems = [];
-    return cartItems.isEmpty ? EmptyWishlistScreen() : const FullWishlistScreen();
+    return cartItems.isNotEmpty ? EmptyWishlistScreen() : FullWishlistScreen();
   }
 }
