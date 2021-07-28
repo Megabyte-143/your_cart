@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../data/prduct_data.dart';
+
 import '../../wigets/feeds_screen/feeds_screen_items.dart';
 
 class ProductDetailScreenSuggestions extends StatelessWidget {
@@ -24,9 +26,9 @@ class ProductDetailScreenSuggestions extends StatelessWidget {
             height: 350,
             child: ListView.builder(
               itemBuilder: (ctx, i) {
-                return FeedsScreenItems();
+                return FeedsScreenItems(i);
               },
-              itemCount: 10,
+              itemCount: products.length,
               scrollDirection: Axis.horizontal,
             ),
           )

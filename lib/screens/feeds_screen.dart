@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../data/prduct_data.dart';
+
 import '../wigets/feeds_screen/feeds_screen_items.dart';
 
 class FeedsScreen extends StatelessWidget {
@@ -13,13 +15,17 @@ class FeedsScreen extends StatelessWidget {
       //appBar: AppBar(),
       body: StaggeredGridView.countBuilder(
         crossAxisCount: 6,
-        itemCount: 8,
-        itemBuilder: (ctx, i) => Container(
-          child: FeedsScreenItems(),
+        itemCount: products.length,
+        shrinkWrap: true,
+        itemBuilder: (ctx, index) => Container(
+          child: FeedsScreenItems(index),
         ),
-        staggeredTileBuilder: (i) => StaggeredTile.count(3, i.isEven ? 4.8 : 5),
-        mainAxisSpacing: 2,
-        crossAxisSpacing: 4,
+        addRepaintBoundaries: true,
+        addAutomaticKeepAlives: true,
+        staggeredTileBuilder: (i) =>
+            const StaggeredTile.count(3, 5.4),
+        mainAxisSpacing: 4,
+        crossAxisSpacing: 6,
       ),
     );
   }

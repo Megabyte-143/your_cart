@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/navigation_rail_destination.dart';
 import '../../provider/dark_theme_provider.dart';
-import '../../wigets/inner_screen/content_builder.dart';
+
+import '../wigets/inner_screen/content_builder.dart';
+import '../wigets/inner_screen/navigation_rail_destination.dart';
 
 class InnerScreen extends StatefulWidget {
   const InnerScreen({Key? key}) : super(key: key);
