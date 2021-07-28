@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:your_cart/screens/cart/cart_screen.dart';
+import 'package:your_cart/screens/feeds_screen.dart';
 
 import './constant/theme_data.dart';
 
@@ -46,7 +48,9 @@ class _MyAppState extends State<MyApp> {
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             home: const BottomBarScreen(),
             routes: {
-              InnerScreen.routeName: (ctx) => InnerScreen(),
+              InnerScreen.routeName: (ctx) => const InnerScreen(),
+              FeedsScreen.routeName: (ctx) => FeedsScreen(),
+              CartScreen.routename: (ctx) => CartScreen(),
             },
           );
         },

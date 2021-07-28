@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/dark_theme_provider.dart';
+import '../../../../provider/dark_theme_provider.dart';
 
 class HomeScreenPopularProducts extends StatelessWidget {
   const HomeScreenPopularProducts({Key? key}) : super(key: key);
@@ -83,8 +83,8 @@ class HomeScreenPopularProducts extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children:  [
-                   const Text(
+                  children: [
+                    const Text(
                       'Description',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -96,7 +96,7 @@ class HomeScreenPopularProducts extends StatelessWidget {
                       color: Colors.transparent,
                       child: InkWell(
                         onTap: () {
-                         return print("POPULAR ADD TO CART");
+                          return print("POPULAR ADD TO CART");
                         },
                         child: const Icon(
                           Icons.add_shopping_cart_outlined,

@@ -9,7 +9,6 @@ class FullCartPrices extends StatelessWidget {
   final double priceValue;
   final Color colorData;
 
-
   @override
   Widget build(BuildContext context) {
     return Row(

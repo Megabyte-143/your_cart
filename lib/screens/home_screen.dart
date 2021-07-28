@@ -1,13 +1,9 @@
 import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
-import 'package:your_cart/wigets/home_screen/popular_products.dart';
-import 'package:your_cart/wigets/home_screen/popular_products_text.dart';
 
-import '../wigets/home_screen/carousel.dart';
-import '../wigets/home_screen/categories.dart';
-import '../wigets/home_screen/categories_text.dart';
-import '../wigets/home_screen/popular.dart';
-import '../wigets/home_screen/popular_text.dart';
+import '../wigets/home_screen/layers/back_layer/back_layer.dart';
+import '../wigets/home_screen/layers/front_layer/front_layer.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,10 +12,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackdropScaffold(
       frontLayerBackgroundColor: Theme.of(context).backgroundColor,
-      headerHeight: MediaQuery.of(context).size.height * 0.5,
-      backLayer: const Center(
-        child: Text('Back Screen'),
-      ),
+      headerHeight: MediaQuery.of(context).size.height * 0.45,
+      backLayer: HomeScreenBackLayer(),
       appBar: BackdropAppBar(
         title: const Text(
           "Home",
@@ -43,7 +37,7 @@ class HomeScreen extends StatelessWidget {
         flexibleSpace: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.25,
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.yellow.shade500,
@@ -54,38 +48,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      frontLayer: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const HomeScreenCarousel(),
-            const SizedBox(height: 20,),
-            const HomeScreenCategoriesText(),
-            Container(
-             // color: Colors.yellow,
-              height: 300,
-              width: double.infinity,
-              child: ListView.builder(
-                itemBuilder: (ctx, i) => HomeScreenCategories(i),
-                itemCount: 7,
-                scrollDirection: Axis.horizontal,
-              ),
-            ),
-            const HomeScreenPopularProductsText(),
-            Container(
-              height: 400,
-              width: double.infinity,
-              child: ListView.builder(
-                itemBuilder: (ctx, i) => const HomeScreenPopularProducts(),
-                itemCount: 7,
-                scrollDirection: Axis.horizontal,
-              ),
-            ),
-            const HomeScreenPopularText(),
-            const HomeScreenPopularSwiper(),
-          ],
-        ),
-      ),
+      frontLayer: const HomeScreenFrontLayer(),
     );
   }
 }

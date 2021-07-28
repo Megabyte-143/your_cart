@@ -55,7 +55,7 @@ class HomeScreenCategories extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              margin: const EdgeInsets.only( left: 10, right: 10, bottom: 0),
+              margin: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
             ),
             HomeScreenCategoriesLabels(categories: _categories, index: index)
           ],

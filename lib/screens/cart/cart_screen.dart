@@ -5,7 +5,7 @@ import 'full_cart_screen.dart';
 
 class CartScreen extends StatelessWidget {
   // const CartScreen({Key? key}) : super(key: key);
-
+  static const routename = '/cart-screen';
   @override
   Widget build(BuildContext context) {
     final List cartItems = [];
