@@ -13,7 +13,6 @@ class HomeScreenPopularProductsText extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        
         "Popular Products",
         style: TextStyle(
           color: darkTheme ? Colors.white : Colors.black,

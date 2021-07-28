@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
               height: 400,
               width: double.infinity,
               child: ListView.builder(
-                itemBuilder: (ctx, i) => const HomeScreenPopularProducts(),
+                itemBuilder: (ctx, i) =>  HomeScreenPopularProducts(),
                 itemCount: 7,
                 scrollDirection: Axis.horizontal,
               ),

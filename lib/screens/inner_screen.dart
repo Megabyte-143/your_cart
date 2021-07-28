@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:your_cart/models/navigation_rail.dart';
-import 'package:your_cart/wigets/inner_screen/content_builder.dart';
+import 'package:provider/provider.dart';
+import 'package:your_cart/provider/dark_theme_provider.dart';
+
+import '../../models/navigation_rail_destination.dart';
+import '../../wigets/inner_screen/content_builder.dart';
 
 class InnerScreen extends StatefulWidget {
   const InnerScreen({Key? key}) : super(key: key);
@@ -82,17 +85,19 @@ class _InnerScreenState extends State<InnerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
+      backgroundColor: darkTheme?Colors.white60:Colors.grey,
       body: Row(
         children: <Widget>[
           LayoutBuilder(builder: (ctx, constraints) {
             return SingleChildScrollView(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: constraints.maxHeight,
+                  minHeight: MediaQuery.of(context).size.height,
                 ),
                 child: IntrinsicHeight(
-                                  child: NavigationRail(
+                  child: NavigationRail(
                     destinations: [
                       destination(brandName[0]),
                       destination(brandName[1]),
@@ -153,38 +158,40 @@ class _InnerScreenState extends State<InnerScreen> {
                       print(brand);
                     },
                     labelType: NavigationRailLabelType.all,
-                    minWidth: 56,
+                    minWidth: 50,
                     leading: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         Center(
                           child: CircleAvatar(
-                            radius: 16,
+                            radius: 20,
                             backgroundImage: NetworkImage(
                                 "https://cdn1.vectorstock.com/i/thumb-large/62/60/default-avatar-photo-placeholder-profile-image-vector-21666260.jpg"),
                           ),
                         ),
                         SizedBox(
-                          height: 80,
+                          height: 150,
                         ),
                       ],
                     ),
                     selectedLabelTextStyle: TextStyle(
-                      color: Colors.amber,
+                      color: darkTheme? Colors.amber:Colors.deepPurple,
                       fontSize: 18,
                     ),
                     unselectedLabelTextStyle: TextStyle(
-                      color: Colors.black,
+                      color: darkTheme? Colors.white: Colors.black,
                       fontSize: 16,
                     ),
-                    groupAlignment: 1,
+                    groupAlignment: -1,
+                    backgroundColor: darkTheme? Colors.grey.shade800:Colors.grey.shade600,
                   ),
                 ),
               ),
             );
           }),
+
           ContentBuilder(context, brand),
         ],
       ),

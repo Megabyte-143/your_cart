@@ -11,16 +11,17 @@ class ContentBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding:  EdgeInsets.fromLTRB(24, 8, 0, 0),
+        padding: EdgeInsets.fromLTRB(2, 8, 0, 0),
         child: MediaQuery.removePadding(
-              removeLeft: true,
-              context: context,
-                        child: ListView.builder(itemBuilder: (ctx, i) {
-          return Content();
-        }
-        ,itemCount: 5,
+          removeLeft: true,
+          context: context,
+          child: ListView.builder(
+            itemBuilder: (ctx, i) {
+              return Content();
+            },
+            itemCount: 5,
+          ),
         ),
-            ),
       ),
     );
   }
