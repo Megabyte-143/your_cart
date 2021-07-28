@@ -11,32 +11,34 @@ class Content extends StatelessWidget {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return InkWell(
       onTap: null,
-      
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           //color: darkTheme ? Colors.grey.shade400 : Colors.grey.shade600,
         ),
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           minHeight: 150,
           minWidth: double.infinity,
           maxHeight: 200,
         ),
-        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-        margin: EdgeInsets.only(left: 10,right: 10,),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        margin: const EdgeInsets.only(
+          left: 10,
+          right: 10,
+        ),
         child: Row(
           children: <Widget>[
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white70,
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: NetworkImage(
                         'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80'),
                     fit: BoxFit.fill,
                   ),
                   borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       blurRadius: 10,
                       spreadRadius: 0.5,
@@ -49,16 +51,25 @@ class Content extends StatelessWidget {
             FittedBox(
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(15),
                     bottomRight: Radius.circular(15),
                     topLeft: Radius.circular(5),
                     bottomLeft: Radius.circular(5),
                   ),
- boxShadow: [BoxShadow(color: Colors.black12,blurRadius: 10,spreadRadius: 10)],                 
-                  color: darkTheme ? Colors.grey.shade600 : Colors.grey.shade600,
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.black12, blurRadius: 10, spreadRadius: 10)
+                  ],
+                  color:
+                      darkTheme ? Colors.grey.shade600 : Colors.grey.shade600,
                 ),
-                padding: EdgeInsets.fromLTRB(15, 15, 0, 15,),
+                padding: const EdgeInsets.fromLTRB(
+                  15,
+                  15,
+                  0,
+                  15,
+                ),
                 width: 150,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

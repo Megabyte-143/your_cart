@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
-import 'package:your_cart/screens/inner_screen.dart';
+
+import '../../screens/inner_screen.dart';
 
 class HomeScreenPopularSwiper extends StatelessWidget {
   const HomeScreenPopularSwiper({Key? key}) : super(key: key);

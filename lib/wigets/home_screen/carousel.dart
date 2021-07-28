@@ -20,7 +20,7 @@ class _HomeScreenCarouselState extends State<HomeScreenCarousel> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-     
+
       height: 250,
       // decoration: const BoxDecoration(color: Colors.black),
       child: CarouselSlider(
@@ -31,9 +31,7 @@ class _HomeScreenCarouselState extends State<HomeScreenCarousel> {
         ),
         items: _carouselImages
             .map((i) => Container(
-                  
                   child: Center(
-                    
                     child: Image.asset(
                       i,
                       fit: BoxFit.fill,

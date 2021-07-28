@@ -12,7 +12,7 @@ class EmptyCartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
-          body: Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
@@ -30,10 +30,7 @@ class EmptyCartScreen extends StatelessWidget {
           ),
           const Text(
             'Your Cart Is Empty',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold
-            ),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 20,

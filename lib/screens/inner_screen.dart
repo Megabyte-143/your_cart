@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/provider/dark_theme_provider.dart';
 
 import '../../models/navigation_rail_destination.dart';
+import '../../provider/dark_theme_provider.dart';
 import '../../wigets/inner_screen/content_builder.dart';
 
 class InnerScreen extends StatefulWidget {
@@ -87,7 +87,7 @@ class _InnerScreenState extends State<InnerScreen> {
   Widget build(BuildContext context) {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
-      backgroundColor: darkTheme?Colors.white60:Colors.grey,
+      backgroundColor: darkTheme ? Colors.white60 : Colors.grey,
       body: Row(
         children: <Widget>[
           LayoutBuilder(builder: (ctx, constraints) {
@@ -160,7 +160,7 @@ class _InnerScreenState extends State<InnerScreen> {
                     labelType: NavigationRailLabelType.all,
                     minWidth: 50,
                     leading: Column(
-                      children: <Widget>[
+                      children: const <Widget>[
                         SizedBox(
                           height: 40,
                         ),
@@ -177,21 +177,21 @@ class _InnerScreenState extends State<InnerScreen> {
                       ],
                     ),
                     selectedLabelTextStyle: TextStyle(
-                      color: darkTheme? Colors.amber:Colors.deepPurple,
+                      color: darkTheme ? Colors.amber : Colors.deepPurple,
                       fontSize: 18,
                     ),
                     unselectedLabelTextStyle: TextStyle(
-                      color: darkTheme? Colors.white: Colors.black,
+                      color: darkTheme ? Colors.white : Colors.black,
                       fontSize: 16,
                     ),
                     groupAlignment: -1,
-                    backgroundColor: darkTheme? Colors.grey.shade800:Colors.grey.shade600,
+                    backgroundColor:
+                        darkTheme ? Colors.grey.shade800 : Colors.grey.shade600,
                   ),
                 ),
               ),
             );
           }),
-
           ContentBuilder(context, brand),
         ],
       ),

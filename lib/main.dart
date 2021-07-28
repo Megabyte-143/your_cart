@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             home: const BottomBarScreen(),
             routes: {
-              InnerScreen.routeName: (ctx) => InnerScreen(),
+              InnerScreen.routeName: (ctx) => const InnerScreen(),
             },
           );
         },
