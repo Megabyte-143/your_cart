@@ -21,17 +21,17 @@ class FullWishlistScreenItems extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               //color: Colors.yellow,
             ),
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               left: 10,
               right: 30,
               bottom: 0,
             ),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Material(
               borderRadius: BorderRadius.circular(20),
               elevation: 3,
               child: Row(
-                children: [
+                children: const [
                   FullWishlistScreenImage(),
                   FullWishlistScreenText(),
                 ],
@@ -39,7 +39,7 @@ class FullWishlistScreenItems extends StatelessWidget {
             ),
           ),
         ),
-        FullWishlistScreenIcon(),
+        const FullWishlistScreenIcon(),
       ],
     );
   }

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../constant/my_icons.dart';
+import '../../constant/my_icons.dart';
 
-import '../../../../provider/dark_theme_provider.dart';
+import '../../provider/dark_theme_provider.dart';
 
-import '../../../../screens/cart/cart_screen.dart';
-import '../../../../screens/feeds_screen.dart';
-import '../../../../screens/wishlist/wishlist_screen.dart';
+import '../../wigets/home_screen/layers/back_layer/button.dart';
+import '../../wigets/home_screen/layers/back_layer/user_image.dart';
 
-import 'button.dart';
-import 'user_image.dart';
+import '../cart/cart_screen.dart';
+
+import '../feeds_screen.dart';
+
+import '../wishlist/wishlist_screen.dart';
 
 class HomeScreenBackLayer extends StatelessWidget {
   const HomeScreenBackLayer({Key? key}) : super(key: key);

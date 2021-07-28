@@ -9,6 +9,6 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List cartItems = [];
-    return !cartItems.isEmpty ? EmptyCartScreen() : const FullCartScreen();
+    return cartItems.isNotEmpty ? EmptyCartScreen() : const FullCartScreen();
   }
 }

@@ -12,8 +12,8 @@ class FullWishlistScreenText extends StatelessWidget {
     final themeChange = Provider.of<DarkThemeProvider>(context);
     return Expanded(
       child: Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
           color: Colors.white10,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(15),
@@ -24,14 +24,14 @@ class FullWishlistScreenText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Title',
               style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500,),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Container(margin: EdgeInsets.only(left: 30),
+            Container(margin: const EdgeInsets.only(left: 30),
               child: Text(
                 'Price',
                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color: themeChange.darkTheme

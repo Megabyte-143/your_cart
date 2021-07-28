@@ -9,6 +9,7 @@ import './screens/bottom_bar_screen.dart';
 import './screens/cart/cart_screen.dart';
 import './screens/feeds_screen.dart';
 import './screens/inner_screen.dart';
+import './screens/product_detail_screen.dart';
 import './screens/wishlist/wishlist_screen.dart';
 
 void main() {
@@ -53,6 +54,7 @@ class _MyAppState extends State<MyApp> {
               FeedsScreen.routeName: (ctx) => FeedsScreen(),
               CartScreen.routename: (ctx) => CartScreen(),
               WishlistScreen.routename: (ctx) => WishlistScreen(),
+              ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
             },
           );
         },

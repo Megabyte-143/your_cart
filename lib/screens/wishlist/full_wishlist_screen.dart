@@ -22,7 +22,7 @@ class FullWishlistScreen extends StatelessWidget {
         ),
             ),
             body: ListView.builder(
-              itemBuilder: (ctx, i) => FullWishlistScreenItems(),
+              itemBuilder: (ctx, i) => const FullWishlistScreenItems(),
               itemCount: 10,
             ),
           );

@@ -5,7 +5,7 @@ class FullWishlistScreenIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
+    return const Positioned(
       right: 28,
       top: 3,
       child: Material(
