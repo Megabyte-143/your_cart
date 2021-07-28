@@ -1,11 +1,13 @@
 import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
+import 'package:your_cart/wigets/home_screen/popular_products.dart';
+import 'package:your_cart/wigets/home_screen/popular_products_text.dart';
 
+import '../wigets/home_screen/carousel.dart';
 import '../wigets/home_screen/categories.dart';
 import '../wigets/home_screen/categories_text.dart';
-import '../wigets/home_screen/carousel.dart';
-import '../wigets/home_screen/popular_text.dart';
 import '../wigets/home_screen/popular.dart';
+import '../wigets/home_screen/popular_text.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class HomeScreen extends StatelessWidget {
     return BackdropScaffold(
       frontLayerBackgroundColor: Theme.of(context).backgroundColor,
       headerHeight: MediaQuery.of(context).size.height * 0.5,
-      backLayer: Center(
+      backLayer: const Center(
         child: Text('Back Screen'),
       ),
       appBar: BackdropAppBar(
@@ -47,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                 Colors.yellow.shade500,
                 Colors.white70,
               ],
-              stops: [0, 1],
+              stops: const [0, 1],
             ),
           ),
         ),
@@ -56,11 +58,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeScreenCarousel(),
-            HomeScreenCategoriesText(),
+            const HomeScreenCarousel(),
+            const SizedBox(height: 20,),
+            const HomeScreenCategoriesText(),
             Container(
              // color: Colors.yellow,
-              height: 270,
+              height: 300,
               width: double.infinity,
               child: ListView.builder(
                 itemBuilder: (ctx, i) => HomeScreenCategories(i),
@@ -68,8 +71,18 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            HomeScreenPopularText(),
-            HomeScreenPopularSwiper(),
+            const HomeScreenPopularProductsText(),
+            Container(
+              height: 400,
+              width: double.infinity,
+              child: ListView.builder(
+                itemBuilder: (ctx, i) => const HomeScreenPopularProducts(),
+                itemCount: 7,
+                scrollDirection: Axis.horizontal,
+              ),
+            ),
+            const HomeScreenPopularText(),
+            const HomeScreenPopularSwiper(),
           ],
         ),
       ),
