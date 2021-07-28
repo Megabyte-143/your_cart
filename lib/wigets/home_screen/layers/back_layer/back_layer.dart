@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/constant/my_icons.dart';
+
+import '../../../../constant/my_icons.dart';
 
 import '../../../../provider/dark_theme_provider.dart';
 
 import '../../../../screens/cart/cart_screen.dart';
 import '../../../../screens/feeds_screen.dart';
+import '../../../../screens/wishlist/wishlist_screen.dart';
 
 import 'button.dart';
 import 'user_image.dart';
@@ -27,10 +29,10 @@ class HomeScreenBackLayer extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
+                const Center(
                   child: BackLayerUserImage(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Center(
@@ -55,7 +57,7 @@ class HomeScreenBackLayer extends StatelessWidget {
                         BackLayerButton(
                           'Wishlist',
                           () {
-                            _routeName(context, FeedsScreen.routeName);
+                            _routeName(context, WishlistScreen.routename);
                           },
                           MyIcons.wishList,
                         ),

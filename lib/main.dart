@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/screens/cart/cart_screen.dart';
-import 'package:your_cart/screens/feeds_screen.dart';
 
 import './constant/theme_data.dart';
 
 import './provider/dark_theme_provider.dart';
 
 import './screens/bottom_bar_screen.dart';
+import './screens/cart/cart_screen.dart';
+import './screens/feeds_screen.dart';
 import './screens/inner_screen.dart';
+import './screens/wishlist/wishlist_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,6 +52,7 @@ class _MyAppState extends State<MyApp> {
               InnerScreen.routeName: (ctx) => const InnerScreen(),
               FeedsScreen.routeName: (ctx) => FeedsScreen(),
               CartScreen.routename: (ctx) => CartScreen(),
+              WishlistScreen.routename: (ctx) => WishlistScreen(),
             },
           );
         },

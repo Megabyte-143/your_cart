@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
     return BackdropScaffold(
       frontLayerBackgroundColor: Theme.of(context).backgroundColor,
       headerHeight: MediaQuery.of(context).size.height * 0.45,
-      backLayer: HomeScreenBackLayer(),
+      backLayer: const HomeScreenBackLayer(),
       appBar: BackdropAppBar(
         title: const Text(
           "Home",

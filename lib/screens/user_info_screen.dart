@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 
+import '../../screens/cart/cart_screen.dart';
+import '../../screens/wishlist/wishlist_screen.dart';
+
+import '../constant/my_icons.dart';
+
 import '../provider/dark_theme_provider.dart';
 
 import '../wigets/user_info.dart';
@@ -24,6 +29,13 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     _scrollController.addListener(() {
       setState(() {});
     });
+  }
+
+  void route(
+    BuildContext ctx,
+    String routeName,
+  ) {
+    Navigator.of(ctx).pushNamed(routeName);
   }
 
   @override
@@ -111,19 +123,44 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(10),
+                    child: UserInfo().userTitle('User Bag'),
+                  ),
+                  const Divider(
+                    thickness: 2,
+                  ),
+                  UserInfo().userBagTile('Wishlist', MyIcons.wishList, () {
+                    route(context, WishlistScreen.routename);
+                  }),
+                  UserInfo().userBagTile('Cart', MyIcons.cart, () {
+                    route(context, CartScreen.routename);
+                  }),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
                     child: UserInfo().userTitle('User Information'),
                   ),
                   const Divider(
                     thickness: 2,
                   ),
-                  UserInfo().userTitleTile('Email', 'Sub-email', 0),
-                  UserInfo().userTitleTile('Phone No.', 'Sub-email', 1),
-                  UserInfo().userTitleTile('Shipping Address', 'Sub-email', 2),
-                  UserInfo().userTitleTile('Watch Later', 'Sub-email', 3),
-                  UserInfo().userTitleTile('Watch Later', 'Sub-email', 3),
-                  UserInfo().userTitleTile('Watch Later', 'Sub-email', 3),
-                  UserInfo().userTitleTile('Watch Later', 'Sub-email', 3),
-                  UserInfo().userTitleTile('Watch Later', 'Sub-email', 3),
+                  UserInfo().userTile(
+                    'Email',
+                    'Sub-email',
+                    Icons.email,
+                  ),
+                  UserInfo().userTile(
+                    'Phone No.',
+                    'Sub-email',
+                    Icons.phone,
+                  ),
+                  UserInfo().userTile(
+                    'Shipping Address',
+                    'Sub-email',
+                    Icons.local_shipping,
+                  ),
+                  UserInfo().userTile(
+                    'Watch Later',
+                    'Sub-email',
+                    Icons.watch_later,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: UserInfo().userTitle('App Settings'),
@@ -143,7 +180,11 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     title: const Text('Dark Theme'),
                     leading: const Icon(Icons.dark_mode),
                   ),
-                  UserInfo().userTitleTile('Logout', 'Sub-email', 4),
+                  UserInfo().userTile(
+                    'Logout',
+                    'Sub-email',
+                    Icons.exit_to_app,
+                  ),
                 ],
               ),
             ),

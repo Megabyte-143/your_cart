@@ -8,14 +8,6 @@ class UserInfo extends StatelessWidget {
     return Container();
   }
 
-  final List<IconData> _userTitleIcons = [
-    Icons.email,
-    Icons.phone,
-    Icons.local_shipping,
-    Icons.watch_later,
-    Icons.exit_to_app,
-  ];
-
   Widget userTitle(String userTitle) {
     return Text(userTitle,
         style: const TextStyle(
@@ -25,11 +17,30 @@ class UserInfo extends StatelessWidget {
         ));
   }
 
-  Widget userTitleTile(String title, String subtitle, int index) {
+ 
+
+  Widget userBagTile(
+    String title,
+    IconData leadingIcon,
+    VoidCallback route,
+  ) {
+    return ListTile(
+      title: Text(title),
+      trailing: const Icon(Icons.chevron_right_outlined),
+      leading: Icon(leadingIcon),
+      onTap: route,
+    );
+  }
+
+  Widget userTile(
+    String title,
+    String subtitle,
+    IconData icon,
+  ) {
     return ListTile(
       title: Text(title),
       subtitle: Text(subtitle),
-      leading: Icon(_userTitleIcons[index]),
+      leading: Icon(icon),
     );
   }
 
