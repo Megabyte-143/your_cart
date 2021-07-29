@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../wigets/home_screen/layers/front_layer/carousel.dart';
-import '../../wigets/home_screen/layers/front_layer/categories.dart';
-import '../../wigets/home_screen/layers/front_layer/categories_text.dart';
-import '../../wigets/home_screen/layers/front_layer/popular.dart';
-import '../../wigets/home_screen/layers/front_layer/popular_products.dart';
-import '../../wigets/home_screen/layers/front_layer/popular_products_text.dart';
-import '../../wigets/home_screen/layers/front_layer/popular_text.dart';
+import '../../wigets/home_screen/layers/front_layer/categories/categories.dart';
+import '../../wigets/home_screen/layers/front_layer/categories/categories_text.dart';
+import '../../wigets/home_screen/layers/front_layer/popular/popular.dart';
+import '../../wigets/home_screen/layers/front_layer/popular/popular_text.dart';
+import '../../wigets/home_screen/layers/front_layer/popular_products/popular_products.dart';
+import '../../wigets/home_screen/layers/front_layer/popular_products/popular_products_text.dart';
 
 
 class HomeScreenFrontLayer extends StatefulWidget {
