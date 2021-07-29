@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
 
-import '../data/prduct_data.dart';
+import '../models/product.dart';
+
+import '../provider/product_list_provider.dart';
 
 import '../wigets/feeds_screen/feeds_screen_items.dart';
 
@@ -10,6 +13,9 @@ class FeedsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _products = Provider.of<ProductListProvider>(context);
+    final List<Product> products = _products.products;
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       //appBar: AppBar(),
@@ -23,8 +29,8 @@ class FeedsScreen extends StatelessWidget {
         addRepaintBoundaries: true,
         addAutomaticKeepAlives: true,
         staggeredTileBuilder: (i) =>
-            const StaggeredTile.count(3, 5.4),
-        mainAxisSpacing: 4,
+            StaggeredTile.count(3, i.isEven ? 5.8 : 5.4),
+        mainAxisSpacing: 1,
         crossAxisSpacing: 6,
       ),
     );

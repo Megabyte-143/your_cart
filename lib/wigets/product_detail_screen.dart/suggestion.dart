@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../data/prduct_data.dart';
+import '../../models/product.dart';
+
+import '../../provider/product_list_provider.dart';
 
 import '../../wigets/feeds_screen/feeds_screen_items.dart';
 
@@ -9,6 +12,8 @@ class ProductDetailScreenSuggestions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final _products = Provider.of<ProductListProvider>(context);
+    final List<Product> products = _products.products;
     return Container(
       padding: const EdgeInsets.all(10),
       child: Column(

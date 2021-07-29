@@ -2,9 +2,10 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../data/prduct_data.dart';
+import '../../models/product.dart';
 
 import '../../provider/dark_theme_provider.dart';
+import '../../provider/product_list_provider.dart';
 
 import '../../screens/product_detail_screen.dart';
 
@@ -20,7 +21,9 @@ class FeedsScreenItems extends StatefulWidget {
 class _FeedsScreenItemsState extends State<FeedsScreenItems> {
   @override
   Widget build(BuildContext context) {
-    final product = products[widget.index];
+    final _products = Provider.of<ProductListProvider>(context);
+    final List<Product> _product = _products.products;
+    final product = _product[widget.index];
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return InkWell(
       onTap: () =>
@@ -43,21 +46,17 @@ class _FeedsScreenItemsState extends State<FeedsScreenItems> {
               child: Container(
                 child: Stack(
                   children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
+                    Container(
+                      width: double.infinity,
+                      constraints: BoxConstraints(
+                        minHeight: 80,
+                        maxHeight: MediaQuery.of(context).size.height * 0.34,
                       ),
-                      child: Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          constraints: BoxConstraints(
-                            minHeight: 100,
-                          ),
-                          child: Image(
-                            image: NetworkImage(product.imageUrl),
-                            fit: BoxFit.fill,
-                          ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        image: DecorationImage(
+                          image: NetworkImage(product.imageUrl),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),

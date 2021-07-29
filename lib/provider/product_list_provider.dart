@@ -1,19 +1,22 @@
-import 'package:your_cart/models/product.dart';
+import 'package:flutter/material.dart';
 
-List<Product> products = [
+import '../models/product.dart';
+
+class ProductListProvider with ChangeNotifier {
+  final List<Product> _products = [
     Product(
-        id: 'Samsung1',
-        title: 'Samsung Galaxy S9',
-        description:
-            'Samsung Galaxy S9 G960U 64GB Unlocked GSM 4G LTE Phone w/ 12MP Camera - Midnight Black',
-        price: 50.99,
-        imageUrl:
-            'https://images-na.ssl-images-amazon.com/images/I/81%2Bh9mpyQmL._AC_SL1500_.jpg',
-        brand: 'Samsung',
-        productCategoryName: 'Phones',
-        quantity: 65,
-        isPopular: false,
-        ),
+      id: 'Samsung1',
+      title: 'Samsung Galaxy S9',
+      description:
+          'Samsung Galaxy S9 G960U 64GB Unlocked GSM 4G LTE Phone w/ 12MP Camera - Midnight Black',
+      price: 50.99,
+      imageUrl:
+          'https://images-na.ssl-images-amazon.com/images/I/81%2Bh9mpyQmL._AC_SL1500_.jpg',
+      brand: 'Samsung',
+      productCategoryName: 'Phones',
+      quantity: 65,
+      isPopular: false,
+    ),
     Product(
         id: 'Samsung Galaxy A10s',
         title: 'Samsung Galaxy A10s',
@@ -582,3 +585,8 @@ List<Product> products = [
         quantity: 951,
         isPopular: true),
   ];
+
+  List<Product> get products {
+    return [..._products];
+  }
+}
