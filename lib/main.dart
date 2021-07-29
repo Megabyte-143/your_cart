@@ -4,11 +4,13 @@ import 'package:provider/provider.dart';
 import './constant/theme_data.dart';
 
 import './provider/dark_theme_provider.dart';
+import './provider/product_list_provider.dart';
 
 import './screens/bottom_bar_screen.dart';
 import './screens/cart/cart_screen.dart';
 import './screens/feeds_screen.dart';
-import './screens/inner_screen.dart';
+import './screens/inner_screen/category_inner_screen.dart';
+import './screens/inner_screen/popular_inner_screen.dart';
 import './screens/product_detail_screen.dart';
 import './screens/wishlist/wishlist_screen.dart';
 
@@ -41,7 +43,8 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(create: (_) {
           return themeChangeProvider;
-        })
+        }),
+        ChangeNotifierProvider(create: (_) => ProductListProvider()),
       ],
       child: Consumer<DarkThemeProvider>(
         builder: (context, themeData, child) {
@@ -54,7 +57,9 @@ class _MyAppState extends State<MyApp> {
               FeedsScreen.routeName: (ctx) => FeedsScreen(),
               CartScreen.routename: (ctx) => CartScreen(),
               WishlistScreen.routename: (ctx) => WishlistScreen(),
-              ProductDetailScreen.routeName: (ctx) =>  const ProductDetailScreen(),
+              ProductDetailScreen.routeName: (ctx) =>
+                  const ProductDetailScreen(),
+              CategoryInnerScreen.routeName: (ctx) => CategoryInnerScreen(),
             },
           );
         },

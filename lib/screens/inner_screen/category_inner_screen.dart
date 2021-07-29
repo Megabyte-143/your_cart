@@ -2,29 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
-import '../models/product.dart';
+import '../../models/product.dart';
 
-import '../provider/product_list_provider.dart';
+import '../../provider/product_list_provider.dart';
 
-import '../wigets/feeds_screen/feeds_screen_items.dart';
+import '../../wigets/inner_screen/category/category_feeds_items.dart';
 
-class FeedsScreen extends StatelessWidget {
-  static const routeName = '/feeds-screen';
+class CategoryInnerScreen extends StatelessWidget {
+  static const routeName = '/category-inner-screen';
 
   @override
   Widget build(BuildContext context) {
-    final _products = Provider.of<ProductListProvider>(context);
-    final List<Product> products = _products.products;
+    final _categoryItems =
+        Provider.of<ProductListProvider>(context, listen: false);
+    final categoryName = ModalRoute.of(context)!.settings.arguments;
+    print(categoryName);
+
+    final List<Product> categoryItem =
+        _categoryItems.findByCategory(categoryName.toString());
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       //appBar: AppBar(),
       body: StaggeredGridView.countBuilder(
         crossAxisCount: 6,
-        itemCount: products.length,
+        itemCount: categoryItem.length,
         shrinkWrap: true,
         itemBuilder: (ctx, index) => Container(
-          child: FeedsScreenItems(index),
+          child: CategoryFeedsItems(
+            index,
+            categoryName.toString(),
+          ),
         ),
         addRepaintBoundaries: true,
         addAutomaticKeepAlives: true,

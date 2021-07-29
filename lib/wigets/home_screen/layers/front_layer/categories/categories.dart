@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../screens/inner_screen/category_inner_screen.dart';
+
 import 'categories_labels.dart';
 
-class HomeScreenCategories extends StatelessWidget {
+class HomeScreenCategories extends StatefulWidget {
   //const HomeScreenCategories({Key? key}) : super(key: key);
 
   const HomeScreenCategories(this.index);
   final int index;
 
+  @override
+  _HomeScreenCategoriesState createState() => _HomeScreenCategoriesState();
+}
+
+class _HomeScreenCategoriesState extends State<HomeScreenCategories> {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, Object>> _categories = [
@@ -43,21 +50,29 @@ class HomeScreenCategories extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
-              height: 250,
-              width: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: AssetImage(
-                    _categories[index]['categoryImagePath'].toString(),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(CategoryInnerScreen.routeName,
+                    arguments: '${_categories[widget.index]['category']}');
+                print('${_categories[widget.index]['category']}');
+              },
+              child: Container(
+                height: 250,
+                width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: AssetImage(
+                      _categories[widget.index]['categoryImagePath'].toString(),
+                    ),
+                    fit: BoxFit.cover,
                   ),
-                  fit: BoxFit.cover,
                 ),
+                margin: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
               ),
-              margin: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
             ),
-            HomeScreenCategoriesLabels(categories: _categories, index: index)
+            HomeScreenCategoriesLabels(
+                categories: _categories, index: widget.index)
           ],
         ),
       ],
