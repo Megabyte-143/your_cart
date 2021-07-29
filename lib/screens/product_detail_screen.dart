@@ -29,7 +29,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 const SizedBox(
                   height: 360,
                 ),
-                ProductDetailScreenDoubleIcons(),
+                const ProductDetailScreenDoubleIcons(),
                 Container(
                   color: Colors.black38,
                   child: Column(
@@ -96,7 +96,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
           ),
           const ProductDetailScreenAppBar(),
-          ProductDetailSccreenBottomBar(),
+          const ProductDetailSccreenBottomBar(),
         ],
       ),
     );
