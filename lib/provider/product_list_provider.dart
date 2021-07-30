@@ -616,4 +616,8 @@ class ProductListProvider with ChangeNotifier {
         _products.where((element) => element.isPopular).toList();
     return brandList;
   }
+
+  Product findById(String productId) {
+    return _products.firstWhere((element) => element.id == productId);
+  }
 }
