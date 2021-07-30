@@ -16,7 +16,7 @@ class Content extends StatelessWidget {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return InkWell(
       onTap: () =>
-          Navigator.of(context).pushNamed(ProductDetailScreen.routeName),
+          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,arguments: product.id,),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -40,7 +40,7 @@ class Content extends StatelessWidget {
                   color: Colors.white70,
                   image: DecorationImage(
                     image: NetworkImage(product.imageUrl),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.contain,
                   ),
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: const [
@@ -106,7 +106,7 @@ class Content extends StatelessWidget {
                     ),
                     Text(
                       product.productCategoryName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.grey,
                         fontSize: 16,

@@ -16,8 +16,13 @@ class ContentBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ProductListProvider _brandProducts =
-        Provider.of<ProductListProvider>(context);
+        Provider.of<ProductListProvider>(context, listen: false);
     final List<Product> brandProducts = _brandProducts.findByBrand(brand);
+    if (brand == "All") {
+      for (int i = 0; i < _brandProducts.products.length; i++) {
+        brandProducts.add(_brandProducts.products[i]);
+      }
+    }
 
     return Expanded(
       child: Padding(
@@ -27,7 +32,7 @@ class ContentBuilder extends StatelessWidget {
           context: context,
           child: ListView.builder(
             itemBuilder: (ctx, index) {
-              return  Content(brandProducts[index],index);
+              return Content(brandProducts[index], index);
             },
             itemCount: brandProducts.length,
           ),

@@ -16,7 +16,7 @@ class HomeScreenPopularProducts extends StatelessWidget {
 
     return InkWell(
       onTap: () =>
-          Navigator.of(context).pushNamed(ProductDetailScreen.routeName),
+          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,arguments: product.id),
       child: Container(
         padding: const EdgeInsets.all(10),
         width: 250,
@@ -31,7 +31,7 @@ class HomeScreenPopularProducts extends StatelessWidget {
                     width: double.maxFinite,
                     height: 200,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10),
                       ),
@@ -91,7 +91,7 @@ class HomeScreenPopularProducts extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -100,7 +100,7 @@ class HomeScreenPopularProducts extends StatelessWidget {
                         child: Text(
                           product.description,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.grey,
                             fontSize: 14,

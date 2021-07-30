@@ -19,7 +19,7 @@ class Feeds extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () =>
-          Navigator.of(context).pushNamed(ProductDetailScreen.routeName),
+          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,arguments: product.id,),
       child: Container(
         margin: const EdgeInsets.only(
           top: 20,
@@ -48,7 +48,7 @@ class Feeds extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
                           image: NetworkImage(product.imageUrl),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),

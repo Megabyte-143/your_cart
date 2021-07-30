@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../screens/inner_screen/popular_inner_screen.dart';
+
 class HomeScreenPopularText extends StatelessWidget {
   const HomeScreenPopularText({Key? key}) : super(key: key);
 
@@ -9,18 +11,22 @@ class HomeScreenPopularText extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text(
+        children: [
+          const Text(
             "Popular Brands",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           TextButton(
-            onPressed: null,
-            child: Text(
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                PopularBrandInnerScreen.routeName,arguments: {7}
+              );
+            },
+            child: const Text(
               'View All',
               style: TextStyle(
                 fontSize: 15,

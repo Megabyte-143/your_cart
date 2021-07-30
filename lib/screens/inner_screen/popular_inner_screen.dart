@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../../provider/dark_theme_provider.dart';
 
-import '../../wigets/inner_screen/popular/popular_content_builder.dart';
 import '../../wigets/inner_screen/popular/navigation_rail_destination.dart';
+import '../../wigets/inner_screen/popular/popular_content_builder.dart';
 
 class PopularBrandInnerScreen extends StatefulWidget {
   const PopularBrandInnerScreen({Key? key}) : super(key: key);
