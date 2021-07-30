@@ -24,7 +24,7 @@ class HomeScreenPopularSwiper extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.95,
       child: Swiper(
           onTap: (index) {
-            Navigator.of(context).pushNamed(InnerScreen.routeName, arguments: {
+            Navigator.of(context).pushNamed(PopularBrandInnerScreen.routeName, arguments: {
               index,
             });
           },

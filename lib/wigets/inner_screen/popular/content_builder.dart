@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:your_cart/models/product.dart';
+import 'package:your_cart/provider/product_list_provider.dart';
 
 import 'content.dart';
 
@@ -10,6 +13,10 @@ class ContentBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ProductListProvider _brandProducts =
+        Provider.of<ProductListProvider>(context);
+    final List<Product> brandProducts = _brandProducts.findByBrand(brand);
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(2, 8, 0, 0),
@@ -17,10 +24,10 @@ class ContentBuilder extends StatelessWidget {
           removeLeft: true,
           context: context,
           child: ListView.builder(
-            itemBuilder: (ctx, i) {
-              return const Content();
+            itemBuilder: (ctx, index) {
+              return  Content(brandProducts[index],index);
             },
-            itemCount: 5,
+            itemCount: brandProducts.length,
           ),
         ),
       ),
