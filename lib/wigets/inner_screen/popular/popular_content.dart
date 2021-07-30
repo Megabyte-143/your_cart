@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/product.dart';
+
 import '../../../provider/dark_theme_provider.dart';
 
-class Content extends StatelessWidget {
-  const Content({Key? key}) : super(key: key);
+import '../../../screens/product_detail_screen.dart';
 
+class Content extends StatelessWidget {
+  const Content(this.product, this.index);
+  final Product product;
+  final int index;
   @override
   Widget build(BuildContext context) {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return InkWell(
-      onTap: null,
+      onTap: () =>
+          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,arguments: product.id,),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -32,10 +38,9 @@ class Content extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white70,
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80'),
-                    fit: BoxFit.fill,
+                  image: DecorationImage(
+                    image: NetworkImage(product.imageUrl),
+                    fit: BoxFit.contain,
                   ),
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: const [
@@ -77,7 +82,7 @@ class Content extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        'Title',
+                        product.title,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
@@ -91,7 +96,7 @@ class Content extends StatelessWidget {
                       margin:
                           const EdgeInsets.only(bottom: 30, top: 30, left: 20),
                       child: Text(
-                        '\$Price',
+                        '\$${product.price}',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -99,9 +104,9 @@ class Content extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Text(
-                      'Category',
-                      style: TextStyle(
+                    Text(
+                      product.productCategoryName,
+                      style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.grey,
                         fontSize: 16,

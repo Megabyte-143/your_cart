@@ -14,8 +14,11 @@ class FeedsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _products = Provider.of<ProductListProvider>(context);
-    final List<Product> products = _products.products;
-
+     List<Product> products = _products.products;
+    final popular = ModalRoute.of(context)!.settings.arguments;
+    if (popular == "popular") {
+      products= _products.findByPopularity();
+    }
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       //appBar: AppBar(),

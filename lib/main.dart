@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             home: const BottomBarScreen(),
             routes: {
-              InnerScreen.routeName: (ctx) => const InnerScreen(),
+              PopularBrandInnerScreen.routeName: (ctx) => const PopularBrandInnerScreen(),
               FeedsScreen.routeName: (ctx) => FeedsScreen(),
               CartScreen.routename: (ctx) => CartScreen(),
               WishlistScreen.routename: (ctx) => WishlistScreen(),

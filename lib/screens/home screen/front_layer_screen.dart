@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../models/product.dart';
+
+import '../../provider/product_list_provider.dart';
 
 import '../../wigets/home_screen/layers/front_layer/carousel.dart';
 import '../../wigets/home_screen/layers/front_layer/categories/categories.dart';
@@ -7,7 +12,6 @@ import '../../wigets/home_screen/layers/front_layer/popular/popular.dart';
 import '../../wigets/home_screen/layers/front_layer/popular/popular_text.dart';
 import '../../wigets/home_screen/layers/front_layer/popular_products/popular_products.dart';
 import '../../wigets/home_screen/layers/front_layer/popular_products/popular_products_text.dart';
-
 
 class HomeScreenFrontLayer extends StatefulWidget {
   const HomeScreenFrontLayer({Key? key}) : super(key: key);
@@ -19,9 +23,12 @@ class HomeScreenFrontLayer extends StatefulWidget {
 class _HomeScreenFrontLayerState extends State<HomeScreenFrontLayer> {
   @override
   Widget build(BuildContext context) {
+    final ProductListProvider _popularProducts =
+        Provider.of<ProductListProvider>(context);
+    final List<Product> popularProducts = _popularProducts.findByPopularity();
     return Scaffold(
       backgroundColor: Colors.grey.shade900,
-          body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,8 +52,10 @@ class _HomeScreenFrontLayerState extends State<HomeScreenFrontLayer> {
               height: 400,
               width: double.infinity,
               child: ListView.builder(
-                itemBuilder: (ctx, i) => const HomeScreenPopularProducts(),
-                itemCount: 7,
+                itemBuilder: (ctx, index) {
+                  return HomeScreenPopularProducts(popularProducts[index]);
+                },
+                itemCount: popularProducts.length,
                 scrollDirection: Axis.horizontal,
               ),
             ),

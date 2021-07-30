@@ -3,17 +3,17 @@ import 'package:provider/provider.dart';
 
 import '../../../provider/dark_theme_provider.dart';
 
-import '../../wigets/inner_screen/popular/content_builder.dart';
 import '../../wigets/inner_screen/popular/navigation_rail_destination.dart';
+import '../../wigets/inner_screen/popular/popular_content_builder.dart';
 
-class InnerScreen extends StatefulWidget {
-  const InnerScreen({Key? key}) : super(key: key);
+class PopularBrandInnerScreen extends StatefulWidget {
+  const PopularBrandInnerScreen({Key? key}) : super(key: key);
   static const routeName = '/inner-screen';
   @override
-  _InnerScreenState createState() => _InnerScreenState();
+  _PopularBrandInnerScreenState createState() => _PopularBrandInnerScreenState();
 }
 
-class _InnerScreenState extends State<InnerScreen> {
+class _PopularBrandInnerScreenState extends State<PopularBrandInnerScreen> {
   int _selectedIndex = 0;
   String brand = '';
   String routeArgs = '';

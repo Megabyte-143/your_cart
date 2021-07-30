@@ -1,24 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../../provider/dark_theme_provider.dart';
+import '../../../../../screens/feeds_screen.dart';
+
 
 class HomeScreenPopularProductsText extends StatelessWidget {
   const HomeScreenPopularProductsText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
 
     return Container(
       padding: const EdgeInsets.all(8.0),
-      child: Text(
-        "Popular Products",
-        style: TextStyle(
-          color: darkTheme ? Colors.white : Colors.black,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Popular Products",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Spacer(),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                FeedsScreen.routeName,arguments: 'popular',
+              );
+            },
+            child: const Text(
+              'View All',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

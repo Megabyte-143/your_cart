@@ -24,10 +24,10 @@ class CategoryFeedsItems extends StatefulWidget {
 class _CategoryFeedsItemsState extends State<CategoryFeedsItems> {
   @override
   Widget build(BuildContext context) {
-    final _products = Provider.of<ProductListProvider>(context);
-    final List<Product> _product = _products.findByCategory(widget.catName);
-    final product = _product[widget.index];
+    final _categories = Provider.of<ProductListProvider>(context);
+    final List<Product> _categoryProducts = _categories.findByCategory(widget.catName);
+    final categoryProduct = _categoryProducts[widget.index];
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    return Feeds(darkTheme: darkTheme, product: product);
+    return Feeds(darkTheme: darkTheme, product: categoryProduct);
   }
 }

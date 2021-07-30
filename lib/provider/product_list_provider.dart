@@ -592,12 +592,32 @@ class ProductListProvider with ChangeNotifier {
 
   List<Product> findByCategory(String catName) {
     print(catName.toLowerCase());
-  
+
     final List<Product> categoryList = _products
         .where((element) => element.productCategoryName
             .toLowerCase()
             .contains(catName.toLowerCase()))
         .toList();
     return categoryList;
+  }
+
+  List<Product> findByBrand(String brandName) {
+    print("provider: " + brandName);
+
+    final List<Product> brandList = _products
+        .where((element) =>
+            element.brand.toLowerCase().contains(brandName.toLowerCase()))
+        .toList();
+    return brandList;
+  }
+
+  List<Product> findByPopularity() {
+    final List<Product> brandList =
+        _products.where((element) => element.isPopular).toList();
+    return brandList;
+  }
+
+  Product findById(String productId) {
+    return _products.firstWhere((element) => element.id == productId);
   }
 }

@@ -8,12 +8,13 @@ import '../../provider/product_list_provider.dart';
 import '../../wigets/feeds_screen/feeds_screen_items.dart';
 
 class ProductDetailScreenSuggestions extends StatelessWidget {
-  const ProductDetailScreenSuggestions({Key? key}) : super(key: key);
-
+  const ProductDetailScreenSuggestions({Key? key, required this.catName})
+      : super(key: key);
+  final String catName;
   @override
   Widget build(BuildContext context) {
-        final _products = Provider.of<ProductListProvider>(context);
-    final List<Product> products = _products.products;
+    final _products = Provider.of<ProductListProvider>(context);
+    final List<Product> products = _products.findByCategory(catName);
     return Container(
       padding: const EdgeInsets.all(10),
       child: Column(
