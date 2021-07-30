@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/models/product.dart';
-import 'package:your_cart/screens/product_detail_screen.dart';
+
+import '../../../models/product.dart';
 
 import '../../../provider/dark_theme_provider.dart';
+
+import '../../../screens/product_detail_screen.dart';
 
 class Content extends StatelessWidget {
   const Content(this.product, this.index);

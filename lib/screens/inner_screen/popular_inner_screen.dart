@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../provider/dark_theme_provider.dart';
 
-import '../../wigets/inner_screen/popular/content_builder.dart';
+import '../../wigets/inner_screen/popular/popular_content_builder.dart';
 import '../../wigets/inner_screen/popular/navigation_rail_destination.dart';
 
 class PopularBrandInnerScreen extends StatefulWidget {

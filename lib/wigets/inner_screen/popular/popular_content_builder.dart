@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/models/product.dart';
-import 'package:your_cart/provider/product_list_provider.dart';
 
-import 'content.dart';
+import '../../../models/product.dart';
+
+import '../../../provider/product_list_provider.dart';
+
+import 'popular_content.dart';
 
 class ContentBuilder extends StatelessWidget {
   //const ContentBuilder({ Key? key }) : super(key: key);

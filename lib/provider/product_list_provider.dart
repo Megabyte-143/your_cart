@@ -610,4 +610,10 @@ class ProductListProvider with ChangeNotifier {
         .toList();
     return brandList;
   }
+
+  List<Product> findByPopularity() {
+    final List<Product> brandList =
+        _products.where((element) => element.isPopular).toList();
+    return brandList;
+  }
 }
