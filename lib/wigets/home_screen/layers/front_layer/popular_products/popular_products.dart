@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../models/product.dart';
 
+import '../../../../../provider/cart_provider.dart';
 import '../../../../../provider/dark_theme_provider.dart';
 
 import '../../../../../screens/product_detail_screen.dart';
@@ -13,10 +14,10 @@ class HomeScreenPopularProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-
+    final cart = Provider.of<CartProvider>(context);
     return InkWell(
-      onTap: () =>
-          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,arguments: product.id),
+      onTap: () => Navigator.of(context)
+          .pushNamed(ProductDetailScreen.routeName, arguments: product.id),
       child: Container(
         padding: const EdgeInsets.all(10),
         width: 250,
@@ -110,11 +111,22 @@ class HomeScreenPopularProducts extends StatelessWidget {
                       Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {
-                            return print("POPULAR ADD TO CART");
-                          },
-                          child: const Icon(
-                            Icons.add_shopping_cart_outlined,
+                          onTap: cart.cartList.containsKey(product.id)
+                              ? () {}
+                              : () {
+                                print("added");
+                                  cart.addItemToCart(
+                                    product.id,
+                                    product.price,
+                                    product.imageUrl,
+                                    product.title,
+                                  );
+                                  
+                                },
+                          child: Icon(
+                            cart.cartList.containsKey(product.id)
+                                ? Icons.check
+                                : Icons.add_shopping_cart_outlined,
                           ),
                         ),
                       )

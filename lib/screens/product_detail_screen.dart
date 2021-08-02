@@ -25,7 +25,7 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final productId = ModalRoute.of(context)!.settings.arguments;
+    final productId = ModalRoute.of(context)!.settings.arguments.toString();
     final _product = Provider.of<ProductListProvider>(context);
     final Product product = _product.findById(productId.toString());
 
@@ -123,7 +123,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ],
             ),
           ),
-          const ProductDetailSccreenBottomBar(),
+          ProductDetailSccreenBottomBar(
+            id: productId,
+            title: product.title,
+            imageUrl: product.imageUrl,
+            price: product.price,
+          ),
         ],
       ),
       appBar: AppBar(

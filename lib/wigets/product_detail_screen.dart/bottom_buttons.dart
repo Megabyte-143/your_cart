@@ -19,7 +19,7 @@ class ProductDetailScreenBottomBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: null,
+        onTap: onTap,
         child: Container(
           decoration: BoxDecoration(color: color),
           alignment: Alignment.center,
