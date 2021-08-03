@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../models/wishlist.dart';
 
+import '../../provider/dark_theme_provider.dart';
 import '../../provider/wishlist_provider.dart';
 
 import '../../screens/product_detail_screen.dart';
@@ -21,6 +22,7 @@ class FullWishlistScreenItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final wishlist = Provider.of<Wishlist>(context);
     final AlertDialogMethod alertDialog = AlertDialogMethod();
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     return Stack(
       children: [
         InkWell(
@@ -32,18 +34,19 @@ class FullWishlistScreenItems extends StatelessWidget {
           },
           splashColor: Colors.black,
           child: Container(
-            height: 140,
+            height: 160,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              //color: Colors.yellow,
+              color:themeChange.darkTheme ? Colors.grey.shade300 : Colors.black38
             ),
             margin: const EdgeInsets.only(
               left: 10,
               right: 30,
               bottom: 0,
+              top: 10,
             ),
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(15),
             child: Material(
               borderRadius: BorderRadius.circular(20),
               elevation: 3,

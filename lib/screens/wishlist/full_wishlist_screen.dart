@@ -18,7 +18,7 @@ class FullWishlistScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:
-            themeChange.darkTheme ? Colors.grey.shade200 : Colors.black38,
+            themeChange.darkTheme ? Colors.grey.shade400 : Colors.black38,
         title: Text(
           'Wishlist',
           style: TextStyle(
