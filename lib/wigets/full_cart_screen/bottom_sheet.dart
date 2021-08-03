@@ -5,6 +5,8 @@ import '../../provider/dark_theme_provider.dart';
 
 class BottomSheet extends StatelessWidget {
   //const BottomSheet({ Key? key }) : super(key: key);
+  const BottomSheet({required this.totalAmt});
+  final double totalAmt;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class BottomSheet extends StatelessWidget {
                 fontWeight: FontWeight.w600),
           ),
           Text(
-            "56789",
+            totalAmt.toStringAsFixed(2),
             style: TextStyle(
               color: themeChange.darkTheme ? Colors.black : Colors.white,
               fontWeight: FontWeight.w900,

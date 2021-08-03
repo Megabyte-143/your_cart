@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
 class FullWishlistScreenIcon extends StatelessWidget {
-  const FullWishlistScreenIcon({Key? key}) : super(key: key);
-
+  const FullWishlistScreenIcon({Key? key, required this.onTap})
+      : super(key: key);
+  final Function onTap;
   @override
   Widget build(BuildContext context) {
-    return const Positioned(
-      right: 28,
+    return Positioned(
+      right: 22,
       top: 3,
       child: Material(
         color: Colors.red,
         child: InkWell(
-          onTap: null,
-          child: Icon(
+          onTap: () {
+            onTap();
+          },
+          child: const Icon(
             Icons.clear,
             color: Colors.white,
           ),

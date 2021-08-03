@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/wishlist_provider.dart';
 
 import 'empty_wishlist_screen.dart';
 import 'full_wishlist_screen.dart';
@@ -8,7 +11,9 @@ class WishlistScreen extends StatelessWidget {
   static const routename = '/wishlist-screen';
   @override
   Widget build(BuildContext context) {
-    final List cartItems = [];
-    return cartItems.isNotEmpty ? EmptyWishlistScreen() : const FullWishlistScreen();
+    final wishList = Provider.of<WishlistProvider>(context);
+    return wishList.favsList.isEmpty
+        ? EmptyWishlistScreen()
+        : const FullWishlistScreen();
   }
 }
