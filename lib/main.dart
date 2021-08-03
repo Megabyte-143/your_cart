@@ -6,6 +6,7 @@ import './constant/theme_data.dart';
 import './provider/cart_provider.dart';
 import './provider/dark_theme_provider.dart';
 import './provider/product_list_provider.dart';
+import './provider/wishlist_provider.dart';
 
 import './screens/bottom_bar_screen.dart';
 import './screens/cart/cart_screen.dart';
@@ -47,6 +48,7 @@ class _MyAppState extends State<MyApp> {
         }),
         ChangeNotifierProvider(create: (_) => ProductListProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => WishlistProvider()),
       ],
       child: Consumer<DarkThemeProvider>(
         builder: (context, themeData, child) {

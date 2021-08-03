@@ -10,7 +10,7 @@ import '../../provider/dark_theme_provider.dart';
 
 import '../../screens/product_detail_screen.dart';
 
-import 'alert_dialog.dart';
+import '../alert_dialog.dart';
 import 'full_cart_icons.dart';
 import 'full_cart_prices.dart';
 

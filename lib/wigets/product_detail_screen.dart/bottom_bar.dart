@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../provider/cart_provider.dart';
 import '../../provider/dark_theme_provider.dart';
+import '../../provider/wishlist_provider.dart';
 
 import 'bottom_buttons.dart';
 import 'icons.dart';
@@ -23,7 +24,8 @@ class ProductDetailSccreenBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final _cart = Provider.of<CartProvider>(context);
-
+    final wishlist = Provider.of<WishlistProvider>(context);
+    ;
     return Align(
       alignment: Alignment.bottomCenter,
       child: Row(
@@ -58,8 +60,13 @@ class ProductDetailSccreenBottomBar extends StatelessWidget {
               height: 50,
               child: ProductDetailScreenIcons(
                 Icons.favorite_outline_outlined,
-                () {},
-                Colors.black,
+                () => wishlist.addItemToWish(
+                  id,
+                  price,
+                  imageUrl,
+                  title,
+                ),
+                wishlist.favsList.containsKey(id) ? Colors.red : Colors.black,
               ),
             ),
           ),

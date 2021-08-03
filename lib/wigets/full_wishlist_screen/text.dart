@@ -5,8 +5,12 @@ import '../../constant/colors.dart';
 import '../../provider/dark_theme_provider.dart';
 
 class FullWishlistScreenText extends StatelessWidget {
-  const FullWishlistScreenText({Key? key}) : super(key: key);
-
+  const FullWishlistScreenText({
+    required this.title,
+    required this.price,
+  });
+  final String title;
+  final double price;
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -24,19 +28,26 @@ class FullWishlistScreenText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Title',
-              style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500,),
+             Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
-            Container(margin: const EdgeInsets.only(left: 30),
+            Container(
+              margin: const EdgeInsets.only(left: 30),
               child: Text(
-                'Price',
-                style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color: themeChange.darkTheme
-                        ? Colors.yellow
-                        : ColorsConsts.purple800,
+                '$price',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  color: themeChange.darkTheme
+                      ? Colors.yellow
+                      : ColorsConsts.purple800,
                 ),
               ),
             ),

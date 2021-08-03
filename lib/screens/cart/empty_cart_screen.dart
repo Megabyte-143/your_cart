@@ -5,6 +5,8 @@ import '../../constant/colors.dart';
 
 import '../../provider/dark_theme_provider.dart';
 
+import '../feeds_screen.dart';
+
 class EmptyCartScreen extends StatelessWidget {
   //const EmptyCartScreen({Key? key}) : super(key: key);
 
@@ -55,8 +57,10 @@ class EmptyCartScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: RaisedButton(
-              onPressed: null,
-              color: ColorsConsts.backgroundColor,
+              onPressed: () {
+                Navigator.of(context).pushNamed(FeedsScreen.routeName);
+              },
+              color: ColorsConsts.purple300,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
