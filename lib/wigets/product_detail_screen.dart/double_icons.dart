@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'icons.dart';
+import 'icons2.dart';
 
 class ProductDetailScreenDoubleIcons extends StatelessWidget {
   const ProductDetailScreenDoubleIcons({
@@ -32,4 +32,3 @@ class ProductDetailScreenDoubleIcons extends StatelessWidget {
     );
   }
 }
-

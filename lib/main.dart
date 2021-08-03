@@ -28,7 +28,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final DarkThemeProvider themeChangeProvider = DarkThemeProvider();
 
-  void getAppTheme() async {
+  Future<void> getAppTheme() async {
     themeChangeProvider.darkTheme =
         await themeChangeProvider.themePreferences.getTheme();
   }

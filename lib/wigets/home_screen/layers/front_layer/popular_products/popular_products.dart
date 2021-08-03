@@ -17,7 +17,6 @@ class HomeScreenPopularProducts extends StatelessWidget {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final cart = Provider.of<CartProvider>(context);
     final wishlist = Provider.of<WishlistProvider>(context);
-    ;
     return InkWell(
       onTap: () => Navigator.of(context)
           .pushNamed(ProductDetailScreen.routeName, arguments: product.id),
