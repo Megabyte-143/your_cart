@@ -162,6 +162,7 @@ class _FullCartItemsState extends State<FullCartItems> {
                                         stops: const [0, 0.7],
                                       ),
                                     ),
+                                    alignment: Alignment.center,
                                     height: 21.98,
                                     width: 22,
                                     child: Text(

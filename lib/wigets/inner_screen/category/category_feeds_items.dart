@@ -6,7 +6,7 @@ import '../../../models/product.dart';
 import '../../../provider/dark_theme_provider.dart';
 import '../../../provider/product_list_provider.dart';
 
-import '../../feeds.dart';
+import '../../feeds_screen/feeds.dart';
 
 class CategoryFeedsItems extends StatefulWidget {
   const CategoryFeedsItems(

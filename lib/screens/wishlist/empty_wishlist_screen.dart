@@ -5,7 +5,7 @@ import '../../constant/colors.dart';
 
 import '../../provider/dark_theme_provider.dart';
 
-import '../../screens/feeds_screen.dart';
+import '../feeds screen/feeds_screen.dart';
 
 class EmptyWishlistScreen extends StatelessWidget {
   //const EmptyCartScreen({Key? key}) : super(key: key);

@@ -6,7 +6,7 @@ import '../../models/product.dart';
 import '../../provider/dark_theme_provider.dart';
 import '../../provider/product_list_provider.dart';
 
-import '../feeds.dart';
+import 'feeds.dart';
 
 class FeedsScreenItems extends StatefulWidget {
   const FeedsScreenItems(this.index);

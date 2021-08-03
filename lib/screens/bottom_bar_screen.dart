@@ -7,7 +7,7 @@ import '../constant/my_icons.dart';
 
 import '../screens/cart/cart_screen.dart';
 
-import 'feeds_screen.dart';
+import 'feeds screen/feeds_screen.dart';
 import 'home screen/home_screen.dart';
 import 'search_screen.dart';
 import 'user_info_screen.dart';

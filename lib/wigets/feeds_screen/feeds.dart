@@ -1,9 +1,11 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
-import '../models/product.dart';
+import '../../models/product.dart';
 
-import '../screens/product_detail_screen.dart';
+import '../../screens/product_detail_screen.dart';
+
+import '../../wigets/feeds_screen/dialog.dart';
 
 class Feeds extends StatelessWidget {
   const Feeds({
@@ -18,8 +20,10 @@ class Feeds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () =>
-          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,arguments: product.id,),
+      onTap: () => Navigator.of(context).pushNamed(
+        ProductDetailScreen.routeName,
+        arguments: product.id,
+      ),
       child: Container(
         margin: const EdgeInsets.only(
           top: 20,
@@ -133,6 +137,13 @@ class Feeds extends StatelessWidget {
                                 color: Colors.transparent,
                                 child: InkWell(
                                   onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (builder) => FeedsScreenDialog(
+                                        product: product,
+                                        ctx: context,
+                                      ),
+                                    );
                                     print('Feeds Items More Button');
                                   },
                                   child: const Icon(

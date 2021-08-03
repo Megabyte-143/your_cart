@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
-import '../constant/my_icons.dart';
+import '../../constant/my_icons.dart';
 
-import '../models/product.dart';
+import '../../models/product.dart';
 
-import '../provider/cart_provider.dart';
-import '../provider/product_list_provider.dart';
-import '../provider/wishlist_provider.dart';
+import '../../provider/cart_provider.dart';
+import '../../provider/product_list_provider.dart';
+import '../../provider/wishlist_provider.dart';
 
-import '../wigets/feeds_screen/feeds_screen_items.dart';
-import '../wigets/product_detail_screen.dart/icons1.dart';
+import '../../wigets/feeds_screen/feeds_screen_items.dart';
+import '../../wigets/product_detail_screen.dart/icons1.dart';
 
 class FeedsScreen extends StatelessWidget {
   static const routeName = '/feeds-screen';
