@@ -6,7 +6,7 @@ import '../../provider/dark_theme_provider.dart';
 import '../../provider/wishlist_provider.dart';
 
 import 'bottom_buttons.dart';
-import 'icons.dart';
+import 'icons2.dart';
 
 class ProductDetailSccreenBottomBar extends StatelessWidget {
   const ProductDetailSccreenBottomBar({
@@ -25,7 +25,7 @@ class ProductDetailSccreenBottomBar extends StatelessWidget {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final _cart = Provider.of<CartProvider>(context);
     final wishlist = Provider.of<WishlistProvider>(context);
-    ;
+
     return Align(
       alignment: Alignment.bottomCenter,
       child: Row(
@@ -37,7 +37,12 @@ class ProductDetailSccreenBottomBar extends StatelessWidget {
               _cart.cartList.containsKey(id)
                   ? () {}
                   : () {
-                      _cart.addItemToCart(id, price, imageUrl, title);
+                      _cart.addItemToCart(
+                        id,
+                        price,
+                        imageUrl,
+                        title,
+                      );
                       print("added");
                     },
               _cart.cartList.containsKey(id) ? "In Cart" : "Add to Cart",
@@ -59,7 +64,7 @@ class ProductDetailSccreenBottomBar extends StatelessWidget {
               color: Colors.white38,
               height: 50,
               child: ProductDetailScreenIcons(
-                Icons.favorite_outline_outlined,
+                wishlist.favsList.containsKey(id) ?Icons.favorite: Icons.favorite_outline,
                 () => wishlist.addItemToWish(
                   id,
                   price,

@@ -10,7 +10,7 @@ import '../../wigets/home_screen/layers/back_layer/user_image.dart';
 
 import '../cart/cart_screen.dart';
 
-import '../feeds_screen.dart';
+import '../feeds screen/feeds_screen.dart';
 
 import '../wishlist/wishlist_screen.dart';
 

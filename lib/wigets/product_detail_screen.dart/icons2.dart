@@ -6,18 +6,19 @@ class ProductDetailScreenIcons extends StatelessWidget {
   const ProductDetailScreenIcons(
     this.icon,
     this.onTap,
-    this.color,
+    this.color, 
   );
   final Color color;
   final IconData icon;
   final VoidCallback onTap;
+ 
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
+    return InkWell(
+      onTap: onTap,
+      child: Material(
+        color: Colors.transparent,
         child: Icon(
           icon,
           color: color,

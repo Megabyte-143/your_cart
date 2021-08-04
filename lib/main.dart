@@ -10,7 +10,7 @@ import './provider/wishlist_provider.dart';
 
 import './screens/bottom_bar_screen.dart';
 import './screens/cart/cart_screen.dart';
-import './screens/feeds_screen.dart';
+import './screens/feeds screen/feeds_screen.dart';
 import './screens/inner_screen/category_inner_screen.dart';
 import './screens/inner_screen/popular_inner_screen.dart';
 import './screens/product_detail_screen.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final DarkThemeProvider themeChangeProvider = DarkThemeProvider();
 
-  void getAppTheme() async {
+  Future<void> getAppTheme() async {
     themeChangeProvider.darkTheme =
         await themeChangeProvider.themePreferences.getTheme();
   }

@@ -5,11 +5,13 @@ import '../constant/my_icons.dart';
 
 import '../models/product.dart';
 
+import '../provider/cart_provider.dart';
 import '../provider/product_list_provider.dart';
+import '../provider/wishlist_provider.dart';
 
 import '../wigets/product_detail_screen.dart/bottom_bar.dart';
 import '../wigets/product_detail_screen.dart/double_icons.dart';
-import '../wigets/product_detail_screen.dart/icons.dart';
+import '../wigets/product_detail_screen.dart/icons1.dart';
 import '../wigets/product_detail_screen.dart/image.dart';
 import '../wigets/product_detail_screen.dart/points_description.dart';
 import '../wigets/product_detail_screen.dart/review.dart';
@@ -36,6 +38,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             imageUrl: product.imageUrl,
           ),
           SingleChildScrollView(
+            
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,7 +47,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
                 const ProductDetailScreenDoubleIcons(),
                 Container(
-                  color: Colors.black38,
+                  color: Colors.grey.shade300,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -136,20 +139,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         centerTitle: true,
         bottomOpacity: 0.5,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ProductDetailScreenIcons(
-              MyIcons.wishList,
-              () {},
-              Colors.amber,
+          Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            child: Consumer<WishlistProvider>(
+              builder: (_, wish, ch) => ProductDetailScreenAppBarIcons(
+                MyIcons.wishList,
+                () {},
+                Colors.amber,
+                wish.favsList.length,
+              ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ProductDetailScreenIcons(
-              MyIcons.cart,
-              () {},
-              Colors.amber,
+          Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(right: 10),
+            child: Consumer<CartProvider>(
+              builder: (_, cart, ch) => ProductDetailScreenAppBarIcons(
+                MyIcons.cart,
+                () {},
+                Colors.amber,
+                cart.cartList.length,
+              ),
             ),
           ),
         ],
