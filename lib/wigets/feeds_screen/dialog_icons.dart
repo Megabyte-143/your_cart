@@ -24,7 +24,7 @@ class DialogIcons extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(boxShadow: [
+                  decoration: const BoxDecoration(boxShadow: [
                     BoxShadow(
                       spreadRadius: 1,
                       blurRadius: 49,
@@ -42,7 +42,7 @@ class DialogIcons extends StatelessWidget {
                 FittedBox(
                   child: Text(
                     label,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),

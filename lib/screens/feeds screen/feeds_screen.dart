@@ -34,7 +34,7 @@ class FeedsScreen extends StatelessWidget {
         actions: [
           Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Consumer<WishlistProvider>(
               builder: (_, wish, ch) => ProductDetailScreenAppBarIcons(
                 MyIcons.wishList,
@@ -46,8 +46,8 @@ class FeedsScreen extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(right: 10),
             child: Consumer<CartProvider>(
               builder: (_, cart, ch) => ProductDetailScreenAppBarIcons(
                 MyIcons.cart,

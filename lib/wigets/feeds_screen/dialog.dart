@@ -54,8 +54,8 @@ class FeedsScreenDialog extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: Row(
                   children: [
                     Consumer<WishlistProvider>(
@@ -76,8 +76,11 @@ class FeedsScreenDialog extends StatelessWidget {
                       icon: Icons.details_outlined,
                       label: "Details",
                       onTap: () => Navigator.pushNamed(
-                          ctx, ProductDetailScreen.routeName,
-                          arguments: product.id),
+                              ctx, ProductDetailScreen.routeName,
+                              arguments: product.id)
+                          .then((value) => Navigator.canPop(context)
+                              ? Navigator.pop(context)
+                              : null),
                     ),
                     Consumer<CartProvider>(
                       builder: (ctx, cart, ch) => DialogIcons(
@@ -87,6 +90,7 @@ class FeedsScreenDialog extends StatelessWidget {
                         label: "Add to Cart",
                         onTap: () {
                           cart.cartList.containsKey(product.id)
+
                               // ignore: unnecessary_statements
                               ? () {}
                               : cart.addItemToCart(
@@ -95,6 +99,9 @@ class FeedsScreenDialog extends StatelessWidget {
                                   product.imageUrl,
                                   product.title,
                                 );
+                          Navigator.canPop(context)
+                              ? Navigator.pop(context)
+                              : null;
                         },
                       ),
                     ),
