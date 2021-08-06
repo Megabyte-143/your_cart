@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: 'Your Cart',
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
-            home: const BottomBarScreen(),
+            home:  BottomBarScreen(),
             routes: {
               PopularBrandInnerScreen.routeName: (ctx) =>
                   const PopularBrandInnerScreen(),
