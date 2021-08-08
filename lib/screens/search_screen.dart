@@ -47,7 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
             pinned: true,
             delegate: SearchHeader(
               search: Container(
-                margin: EdgeInsets.symmetric(horizontal: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.amber,
@@ -64,7 +64,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search Here',
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         Icons.search,
                       ),
                       suffixIcon: IconButton(
@@ -95,9 +95,9 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
           SliverToBoxAdapter(
-            child: _textEditingController.text.isEmpty
+            child: _textEditingController.text.isEmpty && _searchList.isEmpty
                 ? StaggeredGridView.countBuilder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     crossAxisCount: 6,
                     itemCount: productList.length,
                     shrinkWrap: true,
@@ -111,25 +111,43 @@ class _SearchScreenState extends State<SearchScreen> {
                     mainAxisSpacing: 1,
                     crossAxisSpacing: 6,
                   )
-                : StaggeredGridView.countBuilder(
-                    scrollDirection: Axis.vertical,
-                    physics: NeverScrollableScrollPhysics(),
-                    crossAxisCount: 6,
-                    itemCount: _searchList.length,
-                    shrinkWrap: true,
-                    itemBuilder: (ctx, index) => Container(
-                      child: SearchScreenItems(
-                        index,
-                        _textEditingController.text.toLowerCase(),
+                : _searchList.isEmpty
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            SizedBox(height: 50,),
+                            Icon(Icons.search,size: 70,),
+                            SizedBox(height: 50,),
+                            Text(
+                              "NOTHING TO SHOW",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : StaggeredGridView.countBuilder(
+                        scrollDirection: Axis.vertical,
+                        physics: const NeverScrollableScrollPhysics(),
+                        crossAxisCount: 6,
+                        itemCount: _searchList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (ctx, index) => Container(
+                          child: SearchScreenItems(
+                            index,
+                            _textEditingController.text.toLowerCase(),
+                          ),
+                        ),
+                        addRepaintBoundaries: true,
+                        addAutomaticKeepAlives: true,
+                        staggeredTileBuilder: (i) =>
+                            StaggeredTile.count(3, i.isEven ? 5.8 : 5.4),
+                        mainAxisSpacing: 1,
+                        crossAxisSpacing: 6,
                       ),
-                    ),
-                    addRepaintBoundaries: true,
-                    addAutomaticKeepAlives: true,
-                    staggeredTileBuilder: (i) =>
-                        StaggeredTile.count(3, i.isEven ? 5.8 : 5.4),
-                    mainAxisSpacing: 1,
-                    crossAxisSpacing: 6,
-                  ),
           ),
         ],
       ),

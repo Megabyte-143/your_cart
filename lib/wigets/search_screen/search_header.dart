@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/constant/my_icons.dart';
-import 'package:your_cart/provider/cart_provider.dart';
 
-import 'package:your_cart/provider/wishlist_provider.dart';
-import 'package:your_cart/screens/cart/cart_screen.dart';
-import 'package:your_cart/screens/user_info_screen.dart';
-import 'package:your_cart/screens/wishlist/wishlist_screen.dart';
-import 'package:your_cart/wigets/product_detail_screen.dart/icons1.dart';
-import 'package:your_cart/wigets/search_screen/search.dart';
+import '../../constant/my_icons.dart';
+
+import '../../provider/cart_provider.dart';
+import '../../provider/wishlist_provider.dart';
+
+import '../../screens/cart/cart_screen.dart';
+import '../../screens/user_info_screen.dart';
+import '../../screens/wishlist/wishlist_screen.dart';
+
+import '../../wigets/product_detail_screen.dart/icons1.dart';
 
 class SearchHeader extends SliverPersistentHeaderDelegate {
   SearchHeader({
@@ -22,7 +24,7 @@ class SearchHeader extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final double contHeight = 300;
+    const double contHeight = 300;
     return SizedBox(
       child: Stack(
         children: <Widget>[

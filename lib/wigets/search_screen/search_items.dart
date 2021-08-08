@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/wigets/feeds_screen/feeds.dart';
 
 import '../../models/product.dart';
 
 import '../../provider/dark_theme_provider.dart';
 import '../../provider/product_list_provider.dart';
+
+import '../../wigets/feeds_screen/feeds.dart';
 
 class SearchScreenItems extends StatefulWidget {
   const SearchScreenItems(this.index, this.searchText);

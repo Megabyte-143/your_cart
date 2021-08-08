@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:your_cart/screens/landing/landing_screen.dart';
 
 import './constant/theme_data.dart';
+
 import './provider/cart_provider.dart';
 import './provider/dark_theme_provider.dart';
 import './provider/product_list_provider.dart';
 import './provider/wishlist_provider.dart';
+
 import './screens/bottom_bar_screen.dart';
 import './screens/cart/cart_screen.dart';
 import './screens/feeds screen/feeds_screen.dart';
@@ -54,8 +57,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: 'Your Cart',
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
-            home:  const BottomBarScreen(),
-
+            home: const LandingScreen(),
             routes: {
               PopularBrandInnerScreen.routeName: (ctx) =>
                   const PopularBrandInnerScreen(),
