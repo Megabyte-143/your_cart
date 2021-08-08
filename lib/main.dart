@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
             title: 'Your Cart',
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             home:  const BottomBarScreen(),
+
             routes: {
               PopularBrandInnerScreen.routeName: (ctx) =>
                   const PopularBrandInnerScreen(),
