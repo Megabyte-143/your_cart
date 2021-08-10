@@ -620,4 +620,12 @@ class ProductListProvider with ChangeNotifier {
   Product findById(String productId) {
     return _products.firstWhere((element) => element.id == productId);
   }
+
+  List<Product> findBySearch(String searchText) {
+    final List<Product> searchList = _products
+        .where((element) =>
+            element.title.toLowerCase().contains(searchText.toLowerCase()))
+        .toList();
+    return searchList;
+  }
 }

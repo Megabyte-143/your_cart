@@ -16,6 +16,8 @@ class UserInfoScreen extends StatefulWidget {
 
   @override
   _UserInfoScreenState createState() => _UserInfoScreenState();
+
+  static const routeName = "/user-info-screen";
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
