@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LandingScreenGuestButton extends StatelessWidget {
-  const LandingScreenGuestButton({
+class AuthScreenGuestButton extends StatelessWidget {
+  const AuthScreenGuestButton({
     Key? key,
     required this.title,
   }) : super(key: key);

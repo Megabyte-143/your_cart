@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../screens/auth/login_screen.dart';
+import '../../../screens/auth/login_screen.dart';
 
-import '../../wigets/landing_screen/guest_button.dart';
-import '../../wigets/landing_screen/sign_button.dart';
+import '../../../wigets/auth_screen/continue_divider.dart';
+import '../../../wigets/landing_screen/guest_button.dart';
+import '../../../wigets/landing_screen/sign_button.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -137,36 +138,9 @@ class _LandingScreenState extends State<LandingScreen>
               // const SizedBox(
               //   height: 10,
               // ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Expanded(
-                    child: Divider(
-                      indent: 15,
-                      endIndent: 15,
-                      thickness: 2,
-                      color: Colors.black45,
-                    ),
-                  ),
-                  Container(
-                    child: const Text(
-                      "Or Continue With",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  const Expanded(
-                    child: Divider(
-                      indent: 15,
-                      endIndent: 15,
-                      thickness: 2,
-                      color: Colors.black45,
-                    ),
-                  ),
-                ],
+              const AuthScreenContinueDivider(
+                color: Colors.amber,
+                fontSize: 20,
               ),
               const SizedBox(
                 height: 10,
@@ -174,10 +148,10 @@ class _LandingScreenState extends State<LandingScreen>
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const [
-                  LandingScreenGuestButton(
+                  AuthScreenGuestButton(
                     title: "Google +",
                   ),
-                  LandingScreenGuestButton(
+                  AuthScreenGuestButton(
                     title: "Login as a Guest",
                   ),
                 ],

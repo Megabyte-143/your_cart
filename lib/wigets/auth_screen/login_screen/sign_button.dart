@@ -14,13 +14,13 @@ class LoginScreenSignButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.white70),
+        backgroundColor: MaterialStateProperty.all(Colors.orangeAccent),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-            side:  BorderSide(
-              color: Colors.yellow.shade600,
-              width: 5,
+            borderRadius: BorderRadius.circular(20),
+            side: const BorderSide(
+              color: Colors.redAccent,
+              width: 2,
             ),
           ),
         ),
