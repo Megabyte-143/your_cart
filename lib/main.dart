@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/screens/bottom_bar_screen.dart';
+
 
 import './constant/theme_data.dart';
 
@@ -10,6 +10,7 @@ import './provider/product_list_provider.dart';
 import './provider/wishlist_provider.dart';
 
 import './screens/auth/login_screen.dart';
+import './screens/bottom_bar_screen.dart';
 import './screens/cart/cart_screen.dart';
 import './screens/feeds screen/feeds_screen.dart';
 import './screens/inner_screen/category_inner_screen.dart';
