@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:your_cart/screens/landing/landing_screen.dart';
+import 'package:your_cart/screens/bottom_bar_screen.dart';
 
 import './constant/theme_data.dart';
 
@@ -9,11 +9,12 @@ import './provider/dark_theme_provider.dart';
 import './provider/product_list_provider.dart';
 import './provider/wishlist_provider.dart';
 
-import './screens/bottom_bar_screen.dart';
+import './screens/auth/login_screen.dart';
 import './screens/cart/cart_screen.dart';
 import './screens/feeds screen/feeds_screen.dart';
 import './screens/inner_screen/category_inner_screen.dart';
 import './screens/inner_screen/popular_inner_screen.dart';
+import './screens/landing_screen.dart';
 import './screens/product_detail_screen.dart';
 import './screens/user_info_screen.dart';
 import './screens/wishlist/wishlist_screen.dart';
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: 'Your Cart',
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
-            home: const LandingScreen(),
+            home: const LoginScreen(),
             routes: {
               PopularBrandInnerScreen.routeName: (ctx) =>
                   const PopularBrandInnerScreen(),
@@ -68,6 +69,7 @@ class _MyAppState extends State<MyApp> {
                   const ProductDetailScreen(),
               CategoryInnerScreen.routeName: (ctx) => CategoryInnerScreen(),
               UserInfoScreen.routeName: (ctx) => UserInfoScreen(),
+              LoginScreen.routeName: (ctx) => const LoginScreen(),
             },
           );
         },

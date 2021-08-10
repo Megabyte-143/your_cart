@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../wigets/landing_screen/guest_button.dart';
-import '../../../wigets/landing_screen/sign_button.dart';
+import '../../screens/auth/login_screen.dart';
+
+import '../../wigets/landing_screen/guest_button.dart';
+import '../../wigets/landing_screen/sign_button.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen>
     with TickerProviderStateMixin {
   List<String> images = [
-  'https://scontent.fdel27-2.fna.fbcdn.net/v/t1.6435-9/132190833_108376851168802_522196797208854939_n.jpg?_nc_cat=105&ccb=1-4&_nc_sid=e3f864&_nc_ohc=oxuwMDS0XxgAX--tRRn&_nc_ht=scontent.fdel27-2.fna&oh=a67c367be311efc156d37e65872427f7&oe=6134065A',
+    'https://scontent.fdel27-2.fna.fbcdn.net/v/t1.6435-9/132190833_108376851168802_522196797208854939_n.jpg?_nc_cat=105&ccb=1-4&_nc_sid=e3f864&_nc_ohc=oxuwMDS0XxgAX--tRRn&_nc_ht=scontent.fdel27-2.fna&oh=a67c367be311efc156d37e65872427f7&oe=6134065A',
     'https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1138257321%2F0x0.jpg%3Ffit%3Dscale',
     'https://e-shopy.org/wp-content/uploads/2020/08/shop.jpeg',
     'https://e-shopy.org/wp-content/uploads/2020/08/shop.jpeg',
@@ -115,7 +117,9 @@ class _LandingScreenState extends State<LandingScreen>
                   LandingScreenSignButton(
                     title: "Login In",
                     icon: Icons.person,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed(LoginScreen.routeName);
+                    },
                   ),
                   const SizedBox(
                     width: 5,
