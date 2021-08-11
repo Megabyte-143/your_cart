@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginScreenSignButton extends StatelessWidget {
-  const LoginScreenSignButton({
+class SignButton extends StatelessWidget {
+  const SignButton({
     Key? key,
     required this.title,
     required this.onTap,

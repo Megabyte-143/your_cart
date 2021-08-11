@@ -1,24 +1,33 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import '../../wigets/auth_screen/continue_divider.dart';
 import '../../wigets/auth_screen/sign_button.dart';
+import '../../wigets/auth_screen/sign_up_screen/image_header.dart';
 import '../../wigets/landing_screen/guest_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-  static const routeName = "/Login-Screen";
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
+  static const routeName = "/Sign-Up-Screen";
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final FocusNode _passwordNode = FocusNode();
+  final FocusNode _emailNode = FocusNode();
+  final FocusNode _phnNoNode = FocusNode();
   bool obscureText = true;
-  String _emailAdd = "";
-  String _pass = "";
+  String emailAdd = "";
+  String pass = "";
+  String name = "";
+  late int phnNo;
   final _formKey = GlobalKey<FormState>();
+  File _pickedImage = File("assets/images/user.png");
+
   @override
   void dispose() {
     _passwordNode.dispose();
@@ -36,57 +45,47 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.8,
-              child: RotatedBox(
-                quarterTurns: 2,
-                child: WaveWidget(
-                  config: CustomConfig(
-                    gradients: [
-                      [Colors.red, const Color(0xEEF44336)],
-                      [Colors.red.shade800, const Color(0x77E57373)],
-                      [Colors.orange, const Color(0x66FF9800)],
-                      [Colors.white, const Color(0x55FFEB3B)]
-                    ],
-                    durations: [35000, 19440, 10800, 6000],
-                    heightPercentages: [0.20, 0.23, 0.25, 0.30],
-                    blur: const MaskFilter.blur(BlurStyle.solid, 10),
-                    gradientBegin: Alignment.bottomLeft,
-                    gradientEnd: Alignment.topRight,
-                  ),
-                  waveAmplitude: 0,
-                  backgroundColor: Colors.white,
-                  isLoop: true,
-                  size: const Size(
-                    double.infinity,
-                    double.infinity,
-                  ),
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            child: RotatedBox(
+              quarterTurns: 2,
+              child: WaveWidget(
+                config: CustomConfig(
+                  gradients: [
+                    [Colors.red, const Color(0xEEF44336)],
+                    [Colors.red.shade800, const Color(0x77E57373)],
+                    [Colors.orange, const Color(0x66FF9800)],
+                    [Colors.white, const Color(0x55FFEB3B)]
+                  ],
+                  durations: [35000, 19440, 10800, 6000],
+                  heightPercentages: [0.20, 0.23, 0.25, 0.30],
+                  blur: const MaskFilter.blur(BlurStyle.solid, 10),
+                  gradientBegin: Alignment.bottomLeft,
+                  gradientEnd: Alignment.topRight,
+                ),
+                waveAmplitude: 0,
+                backgroundColor: Colors.white,
+                isLoop: true,
+                size: const Size(
+                  double.infinity,
+                  double.infinity,
                 ),
               ),
             ),
-            Column(
+          ),
+          SingleChildScrollView(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 100),
-                  alignment: Alignment.center,
-                  height: 150,
-                  width: 150,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        'https://scontent.fdel27-2.fna.fbcdn.net/v/t1.6435-9/132190833_108376851168802_522196797208854939_n.jpg?_nc_cat=105&ccb=1-4&_nc_sid=e3f864&_nc_ohc=oxuwMDS0XxgAX--tRRn&_nc_ht=scontent.fdel27-2.fna&oh=a67c367be311efc156d37e65872427f7&oe=6134065A',
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                    color: Colors.black,
-                  ),
-                ),
                 const SizedBox(
-                  height: 20,
+                  height: 60,
+                ),
+                SignUpScreenImageHeader(),
+                const SizedBox(
+                  height: 10,
                 ),
                 Container(
                   padding: const EdgeInsets.all(10),
@@ -101,6 +100,42 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         TextFormField(
+                          key: const ValueKey("Name"),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Enter Valid Name";
+                            }
+                            return null;
+                          },
+                          keyboardType: TextInputType.name,
+                          decoration: const InputDecoration(
+                            fillColor: Colors.white70,
+                            border: UnderlineInputBorder(),
+                            filled: true,
+                            prefixIcon: Icon(Icons.person),
+                            labelText: "Ful Name",
+                          ),
+                          onSaved: (value) {
+                            name = value.toString();
+                          },
+                          textInputAction: TextInputAction.next,
+                          onEditingComplete: () =>
+                              FocusScope.of(context).requestFocus(_emailNode),
+                        ),
+                        // FormFields(
+                        //   field: name,
+                        //   icon: Icons.person,
+                        //   keyboardType: TextInputType.name,
+                        //   labelText: "Ful Name",
+                        //   node: _emailNode,
+                        //   valMessage: "Please Enter Valid Name",
+                        //   valueKey: "Name",
+                        // ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          focusNode: _emailNode,
                           key: const ValueKey("Email"),
                           validator: (value) {
                             if (value!.isEmpty || value.contains('@')) {
@@ -117,7 +152,34 @@ class _LoginScreenState extends State<LoginScreen> {
                             labelText: "Email Address",
                           ),
                           onSaved: (value) {
-                            _emailAdd = value.toString();
+                            emailAdd = value.toString();
+                          },
+                          textInputAction: TextInputAction.next,
+                          onEditingComplete: () =>
+                              FocusScope.of(context).requestFocus(_phnNoNode),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          focusNode: _phnNoNode,
+                          key: const ValueKey("PhoneNumber"),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Enter Valid Phone Number";
+                            }
+                            return null;
+                          },
+                          keyboardType: TextInputType.phone,
+                          decoration: const InputDecoration(
+                            fillColor: Colors.white70,
+                            border: UnderlineInputBorder(),
+                            filled: true,
+                            prefixIcon: Icon(Icons.phone),
+                            labelText: "Phone Number",
+                          ),
+                          onSaved: (value) {
+                            phnNo = int.parse(value.toString());
                           },
                           textInputAction: TextInputAction.next,
                           onEditingComplete: () => FocusScope.of(context)
@@ -155,7 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           onSaved: (value) {
-                            _pass = value.toString();
+                            pass = value.toString();
                           },
                           onEditingComplete: submitForm,
                         ),
@@ -170,8 +232,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 10,
                     ),
                     SignButton(
-                      title: "Login In",
-                      icon: Icons.person,
+                      title: "Sign Up",
+                      icon: Icons.person_add,
                       onTap: () {
                         submitForm();
                       },
@@ -190,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children:  [
+                  children: [
                     AuthScreenGuestButton(
                       title: "Google +", onTap: (){},
                     ),
@@ -200,8 +262,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ],
-            )
-          ],
-        ));
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
