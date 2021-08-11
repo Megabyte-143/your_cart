@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../../screens/auth/login_screen.dart';
+import '../../../screens/bottom_bar_screen.dart';
 
 import '../../../wigets/auth_screen/continue_divider.dart';
 import '../../../wigets/landing_screen/guest_button.dart';
 import '../../../wigets/landing_screen/sign_button.dart';
+
+import 'login_screen.dart';
+import 'sign_up_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -128,16 +130,18 @@ class _LandingScreenState extends State<LandingScreen>
                   LandingScreenSignButton(
                     title: "Sign Up",
                     icon: Icons.person_add,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                    },
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                 ],
               ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
+              const SizedBox(
+                height: 20,
+              ),
               const AuthScreenContinueDivider(
                 color: Colors.amber,
                 fontSize: 20,
@@ -147,12 +151,17 @@ class _LandingScreenState extends State<LandingScreen>
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
+                children: [
                   AuthScreenGuestButton(
                     title: "Google +",
+                    onTap: () {},
                   ),
                   AuthScreenGuestButton(
                     title: "Login as a Guest",
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(BottomBarScreen.routeName);
+                    },
                   ),
                 ],
               ),

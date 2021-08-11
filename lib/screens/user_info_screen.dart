@@ -182,10 +182,15 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     title: const Text('Dark Theme'),
                     leading: const Icon(Icons.dark_mode),
                   ),
-                  UserInfo().userTile(
-                    'Logout',
-                    'Sub-email',
-                    Icons.exit_to_app,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: UserInfo().userTile(
+                      'Logout',
+                      'Sub-email',
+                      Icons.exit_to_app,
+                    ),
                   ),
                 ],
               ),

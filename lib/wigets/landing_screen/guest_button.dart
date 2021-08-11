@@ -4,13 +4,17 @@ class AuthScreenGuestButton extends StatelessWidget {
   const AuthScreenGuestButton({
     Key? key,
     required this.title,
+    required this.onTap,
   }) : super(key: key);
   final String title;
+  final Function onTap;
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
       autofocus: true,
-      onPressed: null,
+      onPressed: () {
+        onTap();
+      },
       style: ButtonStyle(
         fixedSize: MaterialStateProperty.all<Size>(
           const Size(
@@ -19,7 +23,7 @@ class AuthScreenGuestButton extends StatelessWidget {
           ),
         ),
         side: MaterialStateBorderSide.resolveWith(
-          (states) =>  BorderSide(
+          (states) => BorderSide(
             width: 5,
             color: Colors.blue.shade300,
           ),

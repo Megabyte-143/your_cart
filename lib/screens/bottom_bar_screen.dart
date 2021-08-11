@@ -14,7 +14,7 @@ import 'user_info_screen.dart';
 
 class BottomBarScreen extends StatefulWidget {
   const BottomBarScreen({Key? key}) : super(key: key);
-
+  static const routeName = "/bottom-bar-screen";
   @override
   _BottomBarScreenState createState() => _BottomBarScreenState();
 }
