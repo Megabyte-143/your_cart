@@ -184,7 +184,9 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).pop();
+                      Navigator.canPop(context)
+                          ? Navigator.of(context).pop()
+                          : null;
                     },
                     child: UserInfo().userTile(
                       'Logout',
