@@ -52,7 +52,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         clipBehavior: Clip.antiAlias,
         elevation: 5,
         child: Container(
-          height: kBottomNavigationBarHeight * 0.98,
+          height: kBottomNavigationBarHeight * 0.99,
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,

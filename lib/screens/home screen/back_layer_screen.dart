@@ -9,9 +9,8 @@ import '../../wigets/home_screen/layers/back_layer/button.dart';
 import '../../wigets/home_screen/layers/back_layer/user_image.dart';
 
 import '../cart/cart_screen.dart';
-
 import '../feeds screen/feeds_screen.dart';
-
+import '../upload_product_sceen.dart';
 import '../wishlist/wishlist_screen.dart';
 
 class HomeScreenBackLayer extends StatelessWidget {
@@ -66,7 +65,7 @@ class HomeScreenBackLayer extends StatelessWidget {
                         BackLayerButton(
                           'Upload New Product',
                           () {
-                            _routeName(context, FeedsScreen.routeName);
+                            _routeName(context, UploadProductScreen.routeName);
                           },
                           MyIcons.upload,
                         ),

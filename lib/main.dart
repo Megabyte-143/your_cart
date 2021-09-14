@@ -17,6 +17,7 @@ import './screens/feeds screen/feeds_screen.dart';
 import './screens/inner_screen/category_inner_screen.dart';
 import './screens/inner_screen/popular_inner_screen.dart';
 import './screens/product_detail_screen.dart';
+import './screens/upload_product_sceen.dart';
 import './screens/user_info_screen.dart';
 import './screens/wishlist/wishlist_screen.dart';
 
@@ -73,6 +74,7 @@ class _MyAppState extends State<MyApp> {
               LoginScreen.routeName: (ctx) => const LoginScreen(),
               SignUpScreen.routeName: (ctx) => const SignUpScreen(),
               BottomBarScreen.routeName: (ctx) => const BottomBarScreen(),
+              UploadProductScreen.routeName: (ctx) => UploadProductScreen(),
             },
           );
         },
