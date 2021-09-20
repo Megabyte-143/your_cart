@@ -23,7 +23,8 @@ class HomeScreenPopularText extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.of(context).pushNamed(
-                PopularBrandInnerScreen.routeName,arguments: {7}
+                PopularBrandInnerScreen.routeName,
+                arguments: {7},
               );
             },
             child: const Text(

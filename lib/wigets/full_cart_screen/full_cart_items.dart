@@ -46,8 +46,10 @@ class _FullCartItemsState extends State<FullCartItems> {
     final _cartList = Provider.of<CartProvider>(context);
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
-            arguments: widget.productId);
+        Navigator.of(context).pushNamed(
+          ProductDetailScreen.routeName,
+          arguments: widget.productId,
+        );
       },
       child: Container(
         decoration: BoxDecoration(

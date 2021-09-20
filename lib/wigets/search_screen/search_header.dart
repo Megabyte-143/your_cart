@@ -23,7 +23,10 @@ class SearchHeader extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     const double contHeight = 300;
     return SizedBox(
       child: Stack(

@@ -38,7 +38,8 @@ class FullWishlistScreenItems extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color:themeChange.darkTheme ? Colors.grey.shade300 : Colors.black38
+              color:
+                  themeChange.darkTheme ? Colors.grey.shade300 : Colors.black38,
             ),
             margin: const EdgeInsets.only(
               left: 10,

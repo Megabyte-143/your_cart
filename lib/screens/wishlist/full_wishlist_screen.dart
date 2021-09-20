@@ -28,22 +28,24 @@ class FullWishlistScreen extends StatelessWidget {
         actions: [
           Container(
             margin: EdgeInsets.only(
-                right: MediaQuery.of(context).size.width * 0.05),
+              right: MediaQuery.of(context).size.width * 0.05,
+            ),
             child: InkWell(
-                onTap: () {
-                  alertDialog.showDialogMethod(
-                    'Remove it from Wishlist',
-                    'Are you Sure?',
-                    wishList.clearWish,
-                    context,
-                  );
-                },
-                child: const Material(
-                  color: Colors.transparent,
-                  child: Icon(
-                    Icons.delete_outline,
-                  ),
-                )),
+              onTap: () {
+                alertDialog.showDialogMethod(
+                  'Remove it from Wishlist',
+                  'Are you Sure?',
+                  wishList.clearWish,
+                  context,
+                );
+              },
+              child: const Material(
+                color: Colors.transparent,
+                child: Icon(
+                  Icons.delete_outline,
+                ),
+              ),
+            ),
           ),
         ],
       ),

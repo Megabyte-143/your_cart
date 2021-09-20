@@ -9,14 +9,18 @@ class FullWishlistScreenImage extends StatelessWidget {
     return Container(
       width: 120,
       decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),bottomLeft: Radius.circular(20)),
-          image: DecorationImage(
-            image: NetworkImage(
-              imageUrl,
-            ),
-            fit: BoxFit.contain,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          bottomLeft: Radius.circular(20),
+        ),
+        image: DecorationImage(
+          image: NetworkImage(
+            imageUrl,
           ),
-          boxShadow: [BoxShadow(offset: Offset.fromDirection(2, 1))]),
+          fit: BoxFit.contain,
+        ),
+        boxShadow: [BoxShadow(offset: Offset.fromDirection(2, 1))],
+      ),
     );
   }
 }

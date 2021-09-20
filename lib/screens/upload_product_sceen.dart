@@ -37,7 +37,7 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
           content: Text(body),
           actions: [
             FlatButton(
-              child: Text("OK"),
+              child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },

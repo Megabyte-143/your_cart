@@ -60,10 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 waveAmplitude: 0,
                 backgroundColor: Colors.white,
                 isLoop: true,
-                size: const Size(
-                  double.infinity,
-                  double.infinity,
-                ),
+                size: Size.infinite,
               ),
             ),
           ),

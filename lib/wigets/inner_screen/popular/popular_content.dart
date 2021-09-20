@@ -15,8 +15,10 @@ class Content extends StatelessWidget {
   Widget build(BuildContext context) {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return InkWell(
-      onTap: () =>
-          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,arguments: product.id,),
+      onTap: () => Navigator.of(context).pushNamed(
+        ProductDetailScreen.routeName,
+        arguments: product.id,
+      ),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -64,7 +66,10 @@ class Content extends StatelessWidget {
                   ),
                   boxShadow: const [
                     BoxShadow(
-                        color: Colors.black12, blurRadius: 10, spreadRadius: 10)
+                      color: Colors.black12,
+                      blurRadius: 10,
+                      spreadRadius: 10,
+                    )
                   ],
                   color:
                       darkTheme ? Colors.grey.shade600 : Colors.grey.shade600,

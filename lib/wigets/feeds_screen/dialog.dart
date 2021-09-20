@@ -22,10 +22,12 @@ class FeedsScreenDialog extends StatelessWidget {
       child: Container(
         //padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: Theme.of(context).backgroundColor),
+          borderRadius: BorderRadius.circular(30),
+          color: Theme.of(context).backgroundColor,
+        ),
         constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.55),
+          maxHeight: MediaQuery.of(context).size.height * 0.55,
+        ),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -36,16 +38,17 @@ class FeedsScreenDialog extends StatelessWidget {
                   maxHeight: MediaQuery.of(context).size.height * 0.4,
                 ),
                 decoration: BoxDecoration(
-                    // image: DecorationImage(
-                    //   image: AssetImage(
-                    //     'assets/images/apple.jpg',
+                  // image: DecorationImage(
+                  //   image: AssetImage(
+                  //     'assets/images/apple.jpg',
 
-                    //   ),
-                    //   colorFilter: ColorFilter.linearToSrgbGamma(),
-                    //   fit: BoxFit.contain,
-                    // ),
-                    //color: Colors.yellow,
-                    borderRadius: BorderRadius.circular(10)),
+                  //   ),
+                  //   colorFilter: ColorFilter.linearToSrgbGamma(),
+                  //   fit: BoxFit.contain,
+                  // ),
+                  //color: Colors.yellow,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: Image(
                   image: NetworkImage(
                     product.imageUrl,
@@ -76,11 +79,14 @@ class FeedsScreenDialog extends StatelessWidget {
                       icon: Icons.details_outlined,
                       label: "Details",
                       onTap: () => Navigator.pushNamed(
-                              ctx, ProductDetailScreen.routeName,
-                              arguments: product.id)
-                          .then((value) => Navigator.canPop(context)
-                              ? Navigator.pop(context)
-                              : null),
+                        ctx,
+                        ProductDetailScreen.routeName,
+                        arguments: product.id,
+                      ).then(
+                        (value) => Navigator.canPop(context)
+                            ? Navigator.pop(context)
+                            : null,
+                      ),
                     ),
                     Consumer<CartProvider>(
                       builder: (ctx, cart, ch) => DialogIcons(

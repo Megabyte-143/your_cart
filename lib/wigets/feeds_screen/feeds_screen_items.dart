@@ -27,4 +27,3 @@ class _FeedsScreenItemsState extends State<FeedsScreenItems> {
     return Feeds(darkTheme: darkTheme, product: product);
   }
 }
-

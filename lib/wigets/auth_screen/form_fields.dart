@@ -39,7 +39,7 @@ class _FormFieldsState extends State<FormFields> {
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         fillColor: Colors.white70,
-        border: UnderlineInputBorder(),
+        border: const UnderlineInputBorder(),
         filled: true,
         prefixIcon: Icon(widget.icon),
         labelText: widget.labelText,

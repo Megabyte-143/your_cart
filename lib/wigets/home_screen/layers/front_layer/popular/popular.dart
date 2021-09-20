@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../screens/inner_screen/popular_inner_screen.dart';
 
@@ -26,7 +26,7 @@ class HomeScreenPopularSwiper extends StatelessWidget {
           onTap: (index) {
             Navigator.of(context).pushNamed(PopularBrandInnerScreen.routeName, arguments: {
               index,
-            });
+            },);
           },
           layout: SwiperLayout.DEFAULT,
           autoplay: true,
@@ -44,7 +44,7 @@ class HomeScreenPopularSwiper extends StatelessWidget {
                 ),
               ),
             );
-          }),
+          },),
     );
   }
 }

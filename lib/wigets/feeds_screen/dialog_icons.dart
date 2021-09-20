@@ -24,13 +24,16 @@ class DialogIcons extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  decoration: const BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      spreadRadius: 1,
-                      blurRadius: 49,
-                      //color: Colors.transparent,
-                    ),
-                  ], color: Colors.transparent),
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        spreadRadius: 1,
+                        blurRadius: 49,
+                        //color: Colors.transparent,
+                      ),
+                    ],
+                    color: Colors.transparent,
+                  ),
                   child: ClipOval(
                     child: Icon(
                       icon,

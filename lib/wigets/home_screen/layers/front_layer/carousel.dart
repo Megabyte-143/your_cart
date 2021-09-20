@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreenCarousel extends StatefulWidget {
   const HomeScreenCarousel({Key? key}) : super(key: key);
@@ -30,14 +30,16 @@ class _HomeScreenCarouselState extends State<HomeScreenCarousel> {
           enlargeCenterPage: true,
         ),
         items: _carouselImages
-            .map((i) => Container(
-                  child: Center(
-                    child: Image.asset(
-                      i,
-                      fit: BoxFit.fill,
-                    ),
+            .map(
+              (i) => Container(
+                child: Center(
+                  child: Image.asset(
+                    i,
+                    fit: BoxFit.fill,
                   ),
-                ))
+                ),
+              ),
+            )
             .toList(),
       ),
     );

@@ -52,8 +52,10 @@ class _HomeScreenCategoriesState extends State<HomeScreenCategories> {
           children: [
             InkWell(
               onTap: () {
-                Navigator.of(context).pushNamed(CategoryInnerScreen.routeName,
-                    arguments: '${_categories[widget.index]['category']}');
+                Navigator.of(context).pushNamed(
+                  CategoryInnerScreen.routeName,
+                  arguments: '${_categories[widget.index]['category']}',
+                );
                 print('${_categories[widget.index]['category']}');
               },
               child: Container(
@@ -72,7 +74,9 @@ class _HomeScreenCategoriesState extends State<HomeScreenCategories> {
               ),
             ),
             HomeScreenCategoriesLabels(
-                categories: _categories, index: widget.index)
+              categories: _categories,
+              index: widget.index,
+            )
           ],
         ),
       ],

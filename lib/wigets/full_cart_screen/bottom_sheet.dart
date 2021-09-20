@@ -60,9 +60,10 @@ class BottomSheet extends StatelessWidget {
           Text(
             "Total Price: ",
             style: TextStyle(
-                color: themeChange.darkTheme ? Colors.black : Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.w600),
+              color: themeChange.darkTheme ? Colors.black : Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           Text(
             totalAmt.toStringAsFixed(2),

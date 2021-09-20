@@ -9,15 +9,15 @@ class UserInfo extends StatelessWidget {
   }
 
   Widget userTitle(String userTitle) {
-    return Text(userTitle,
-        style: const TextStyle(
-          fontSize: 24,
-          fontStyle: FontStyle.italic,
-          fontWeight: FontWeight.bold,
-        ));
+    return Text(
+      userTitle,
+      style: const TextStyle(
+        fontSize: 24,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.bold,
+      ),
+    );
   }
-
- 
 
   Widget userBagTile(
     String title,
