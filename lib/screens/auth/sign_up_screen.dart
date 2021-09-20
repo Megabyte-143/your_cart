@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
+import '../../wigets/auth_screen/alert_dialog.dart';
 import '../../wigets/auth_screen/continue_divider.dart';
 import '../../wigets/auth_screen/sign_button.dart';
 import '../../wigets/auth_screen/sign_up_screen/image_header.dart';
@@ -26,7 +28,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String name = "";
   late int phnNo;
   final _formKey = GlobalKey<FormState>();
-  File _pickedImage = File("assets/images/user.png");
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final File _pickedImage = File("assets/images/user.png");
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -34,11 +38,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  void submitForm() {
+  void submitForm() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {
+      setState(() {
+        _isLoading = true;
+      });
       _formKey.currentState!.save();
+      try {
+        await _auth.createUserWithEmailAndPassword(
+          email: emailAdd.toLowerCase().trim(),
+          password: pass.trim(),
+        );
+      } catch (error) {
+        AlertDialogMethod().showDialogMethod(
+          error.toString(),
+          context,
+        );
+        print("error occucered => $error");
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -69,10 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 waveAmplitude: 0,
                 backgroundColor: Colors.white,
                 isLoop: true,
-                size: const Size(
-                  double.infinity,
-                  double.infinity,
-                ),
+                size: Size.infinite,
               ),
             ),
           ),
@@ -231,13 +251,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(
                       width: 10,
                     ),
-                    SignButton(
-                      title: "Sign Up",
-                      icon: Icons.person_add,
-                      onTap: () {
-                        submitForm();
-                      },
-                    ),
+                    if (_isLoading)
+                      const CircularProgressIndicator()
+                    else
+                      SignButton(
+                        title: "Sign Up",
+                        icon: Icons.person_add,
+                        onTap: () {
+                          submitForm();
+                        },
+                      ),
                   ],
                 ),
                 const SizedBox(
@@ -254,10 +277,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AuthScreenGuestButton(
-                      title: "Google +", onTap: (){},
+                      title: "Google +",
+                      onTap: () {},
                     ),
                     AuthScreenGuestButton(
-                      title: "Facebook", onTap: (){},
+                      title: "Facebook",
+                      onTap: () {},
                     ),
                   ],
                 ),
