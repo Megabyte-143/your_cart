@@ -19,13 +19,14 @@ class WishlistProvider with ChangeNotifier {
       deleteItem(productId);
     } else {
       _favsList.putIfAbsent(
-          productId,
-          () => Wishlist(
-                id: DateTime.now().toString(),
-                title: title,
-                price: price,
-                imageUrl: imageUrl,
-              ));
+        productId,
+        () => Wishlist(
+          id: DateTime.now().toString(),
+          title: title,
+          price: price,
+          imageUrl: imageUrl,
+        ),
+      );
     }
     notifyListeners();
   }

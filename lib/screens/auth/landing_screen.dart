@@ -58,123 +58,124 @@ class _LandingScreenState extends State<LandingScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        CachedNetworkImage(
-          imageUrl: images[0],
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
-          // placeholder: (context, imageUrl) => Image.network(
-          //   'https://media.wired.com/photos/5c9040ee4950d24718d6da99/16:9/w_2400,h_1350,c_limit/shoppingcart-1066110386.jpg',
-          //   fit: BoxFit.cover,
-          // ),
-          alignment: FractionalOffset(_animation.value, 0),
-          errorWidget: (context, imageUrl, error) => const Icon(
-            Icons.error,
-            size: 40,
+      body: Stack(
+        children: [
+          CachedNetworkImage(
+            imageUrl: images[0],
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+            // placeholder: (context, imageUrl) => Image.network(
+            //   'https://media.wired.com/photos/5c9040ee4950d24718d6da99/16:9/w_2400,h_1350,c_limit/shoppingcart-1066110386.jpg',
+            //   fit: BoxFit.cover,
+            // ),
+            alignment: FractionalOffset(_animation.value, 0),
+            errorWidget: (context, imageUrl, error) => const Icon(
+              Icons.error,
+              size: 40,
+            ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 30,
-          ),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text(
-                "Welcome",
-                style: TextStyle(
-                  fontSize: 60,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w700,
+          Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 30,
+            ),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Text(
+                  "Welcome",
+                  style: TextStyle(
+                    fontSize: 60,
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Welcome to the future of shopping",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30,
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Welcome to the future of shopping",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    LandingScreenSignButton(
+                      title: "Login In",
+                      icon: Icons.person,
+                      onTap: () {
+                        Navigator.of(context).pushNamed(LoginScreen.routeName);
+                      },
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    LandingScreenSignButton(
+                      title: "Sign Up",
+                      icon: Icons.person_add,
+                      onTap: () {
+                        Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                      },
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const AuthScreenContinueDivider(
+                  color: Colors.amber,
+                  fontSize: 20,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    AuthScreenGuestButton(
+                      title: "Google +",
+                      onTap: () {},
+                    ),
+                    AuthScreenGuestButton(
+                      title: "Login as a Guest",
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(BottomBarScreen.routeName);
+                      },
+                    ),
+                  ],
+                ),
+                const Divider(
+                  indent: 15,
+                  endIndent: 15,
+                  thickness: 2,
                   color: Colors.black45,
-                  fontWeight: FontWeight.w400,
                 ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Row(
-                children: [
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  LandingScreenSignButton(
-                    title: "Login In",
-                    icon: Icons.person,
-                    onTap: () {
-                      Navigator.of(context).pushNamed(LoginScreen.routeName);
-                    },
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  LandingScreenSignButton(
-                    title: "Sign Up",
-                    icon: Icons.person_add,
-                    onTap: () {
-                      Navigator.of(context).pushNamed(SignUpScreen.routeName);
-                    },
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const AuthScreenContinueDivider(
-                color: Colors.amber,
-                fontSize: 20,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  AuthScreenGuestButton(
-                    title: "Google +",
-                    onTap: () {},
-                  ),
-                  AuthScreenGuestButton(
-                    title: "Login as a Guest",
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushNamed(BottomBarScreen.routeName);
-                    },
-                  ),
-                ],
-              ),
-              const Divider(
-                indent: 15,
-                endIndent: 15,
-                thickness: 2,
-                color: Colors.black45,
-              ),
-            ],
-          ),
-        )
-      ],
-    ));
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

@@ -12,7 +12,7 @@ class CartProvider with ChangeNotifier {
   double get totalAmt {
     var total = 0.0;
     _cartList.forEach((key, value) {
-      total  = total+((value.price) * (value.quantity));
+      total = total + ((value.price) * (value.quantity));
     });
     return total;
   }
@@ -25,24 +25,26 @@ class CartProvider with ChangeNotifier {
   ) {
     if (_cartList.containsKey(id)) {
       _cartList.update(
-          id,
-          (existingItem) => Cart(
-                id: id,
-                imageUrl: imageUrl,
-                price: price,
-                quantity: existingItem.quantity + 1,
-                title: title,
-              ));
+        id,
+        (existingItem) => Cart(
+          id: id,
+          imageUrl: imageUrl,
+          price: price,
+          quantity: existingItem.quantity + 1,
+          title: title,
+        ),
+      );
     } else {
       _cartList.putIfAbsent(
-          id,
-          () => Cart(
-                id: DateTime.now().toString(),
-                title: title,
-                quantity: 1,
-                price: price,
-                imageUrl: imageUrl,
-              ));
+        id,
+        () => Cart(
+          id: DateTime.now().toString(),
+          title: title,
+          quantity: 1,
+          price: price,
+          imageUrl: imageUrl,
+        ),
+      );
     }
     notifyListeners();
   }
@@ -55,14 +57,15 @@ class CartProvider with ChangeNotifier {
   ) {
     if (_cartList.containsKey(id)) {
       _cartList.update(
-          id,
-          (existingItem) => Cart(
-                id: id,
-                imageUrl: imageUrl,
-                price: price,
-                quantity: existingItem.quantity - 1,
-                title: title,
-              ));
+        id,
+        (existingItem) => Cart(
+          id: id,
+          imageUrl: imageUrl,
+          price: price,
+          quantity: existingItem.quantity - 1,
+          title: title,
+        ),
+      );
     }
     notifyListeners();
   }

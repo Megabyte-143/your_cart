@@ -27,14 +27,16 @@ class Styles {
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
-          colorScheme: isDarkTheme
-              ? const ColorScheme.dark()
-              : const ColorScheme.light()),
+            colorScheme: isDarkTheme
+                ? const ColorScheme.dark()
+                : const ColorScheme.light(),
+          ),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
       ),
       textSelectionTheme: TextSelectionThemeData(
-          selectionColor: isDarkTheme ? Colors.white : Colors.black),
+        selectionColor: isDarkTheme ? Colors.white : Colors.black,
+      ),
     );
   }
 }

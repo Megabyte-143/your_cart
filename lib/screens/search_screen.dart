@@ -68,18 +68,19 @@ class _SearchScreenState extends State<SearchScreen> {
                         Icons.search,
                       ),
                       suffixIcon: IconButton(
-                          icon: Icon(
-                            Icons.delete,
-                            color: _textEditingController.text.isNotEmpty
-                                ? Colors.red
-                                : Colors.grey,
-                          ),
-                          onPressed: _textEditingController.text.isEmpty
-                              ? () {}
-                              : () {
-                                  _textEditingController.clear();
-                                  _node.unfocus();
-                                }),
+                        icon: Icon(
+                          Icons.delete,
+                          color: _textEditingController.text.isNotEmpty
+                              ? Colors.red
+                              : Colors.grey,
+                        ),
+                        onPressed: _textEditingController.text.isEmpty
+                            ? () {}
+                            : () {
+                                _textEditingController.clear();
+                                _node.unfocus();
+                              },
+                      ),
                     ),
                     controller: _textEditingController,
                     focusNode: _node,
@@ -116,9 +117,16 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
-                            SizedBox(height: 50,),
-                            Icon(Icons.search,size: 70,),
-                            SizedBox(height: 50,),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Icon(
+                              Icons.search,
+                              size: 70,
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
                             Text(
                               "NOTHING TO SHOW",
                               style: TextStyle(

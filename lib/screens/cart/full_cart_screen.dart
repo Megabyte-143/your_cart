@@ -37,7 +37,8 @@ class _FullCartScreenState extends State<FullCartScreen> {
         actions: [
           Container(
             margin: EdgeInsets.only(
-                right: MediaQuery.of(context).size.width * 0.05),
+              right: MediaQuery.of(context).size.width * 0.05,
+            ),
             child: FullCartIcons(
               onTap: () {
                 print("App Bar Icon");
@@ -59,19 +60,20 @@ class _FullCartScreenState extends State<FullCartScreen> {
       body: Container(
         margin: const EdgeInsets.only(bottom: 60),
         child: ListView.builder(
-            itemCount: cartList.length,
-            itemBuilder: (ctx, i) {
-              return ChangeNotifierProvider.value(
-                value: cartList[i],
-                child: FullCartItems(
-                  productId: _cartList.cartList.keys.toList()[i],
-                  // imageUrl: cartList[i].imageUrl,
-                  // title: cartList[i].title,
-                  // price: cartList[i].price,
-                  // quantity: cartList[i].quantity,
-                ),
-              );
-            }),
+          itemCount: cartList.length,
+          itemBuilder: (ctx, i) {
+            return ChangeNotifierProvider.value(
+              value: cartList[i],
+              child: FullCartItems(
+                productId: _cartList.cartList.keys.toList()[i],
+                // imageUrl: cartList[i].imageUrl,
+                // title: cartList[i].title,
+                // price: cartList[i].price,
+                // quantity: cartList[i].quantity,
+              ),
+            );
+          },
+        ),
       ),
       bottomSheet: bottom_sheet.BottomSheet(
         totalAmt: _cartList.totalAmt,

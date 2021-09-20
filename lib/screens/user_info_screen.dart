@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
+import 'package:provider/provider.dart';
 
 import '../../screens/cart/cart_screen.dart';
 import '../../screens/wishlist/wishlist_screen.dart';
-
 import '../constant/my_icons.dart';
-
 import '../provider/dark_theme_provider.dart';
-
 import '../wigets/user_info.dart';
 
 class UserInfoScreen extends StatefulWidget {
@@ -53,70 +50,72 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               expandedHeight: 200,
               pinned: true,
               backgroundColor: Colors.black,
-              flexibleSpace: LayoutBuilder(builder: (ctx, constraints) {
-                top = constraints.biggest.height;
-                return Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.black,
-                        Colors.white,
-                      ],
-                      begin: FractionalOffset(0.0, 0.0),
-                      end: FractionalOffset(1.0, 0.0),
-                      stops: [0.0, 1.0],
-                      tileMode: TileMode.clamp,
+              flexibleSpace: LayoutBuilder(
+                builder: (ctx, constraints) {
+                  top = constraints.biggest.height;
+                  return Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.black,
+                          Colors.white,
+                        ],
+                        begin: FractionalOffset.topLeft,
+                        end: FractionalOffset(1.0, 0.0),
+                        stops: [0.0, 1.0],
+                        tileMode: TileMode.clamp,
+                      ),
                     ),
-                  ),
-                  child: FlexibleSpaceBar(
-                    collapseMode: CollapseMode.parallax,
-                    centerTitle: true,
-                    title: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AnimatedOpacity(
-                          opacity: top <= 100 ? 1.0 : 0.0,
-                          duration: const Duration(milliseconds: 300),
-                          child: Row(
-                            children: <Widget>[
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              Container(
-                                height: kToolbarHeight / 2,
-                                width: kToolbarHeight / 2,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(
-                                      'assets/images/user.png',
+                    child: FlexibleSpaceBar(
+                      collapseMode: CollapseMode.parallax,
+                      centerTitle: true,
+                      title: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          AnimatedOpacity(
+                            opacity: top <= 100 ? 1.0 : 0.0,
+                            duration: const Duration(milliseconds: 300),
+                            child: Row(
+                              children: <Widget>[
+                                const SizedBox(
+                                  width: 12,
+                                ),
+                                Container(
+                                  height: kToolbarHeight / 2,
+                                  width: kToolbarHeight / 2,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                        'assets/images/user.png',
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              const Text(
-                                'Guest',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
+                                const SizedBox(
+                                  width: 12,
                                 ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                                const Text(
+                                  'Guest',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      background: const Image(
+                        image: AssetImage('assets/images/user.png'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    background: const Image(
-                      image: AssetImage('assets/images/user.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                );
-              }),
+                  );
+                },
+              ),
             ),
             SliverToBoxAdapter(
               child: Column(
