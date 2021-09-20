@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
+import '../../wigets/auth_screen/alert_dialog.dart';
 import '../../wigets/auth_screen/continue_divider.dart';
 import '../../wigets/auth_screen/sign_button.dart';
 import '../../wigets/landing_screen/guest_button.dart';
@@ -19,17 +21,38 @@ class _LoginScreenState extends State<LoginScreen> {
   String _emailAdd = "";
   String _pass = "";
   final _formKey = GlobalKey<FormState>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _isLoading = false;
   @override
   void dispose() {
     _passwordNode.dispose();
     super.dispose();
   }
 
-  void submitForm() {
+  void submitForm() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {
+      setState(() {
+        _isLoading = true;
+      });
       _formKey.currentState!.save();
+      try {
+        await _auth.signInWithEmailAndPassword(
+          email: _emailAdd.toLowerCase().trim(),
+          password: _pass.trim(),
+        );
+      } catch (error) {
+        AlertDialogMethod().showDialogMethod(
+          error.toString(),
+          context,
+        );
+        print("error occucered => $error");
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -166,13 +189,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     width: 10,
                   ),
-                  SignButton(
-                    title: "Login In",
-                    icon: Icons.person,
-                    onTap: () {
-                      submitForm();
-                    },
-                  ),
+                  if (_isLoading)
+                    const CircularProgressIndicator()
+                  else
+                    SignButton(
+                      title: "Login In",
+                      icon: Icons.person,
+                      onTap: () {
+                        submitForm();
+                      },
+                    ),
                 ],
               ),
               const SizedBox(
