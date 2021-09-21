@@ -1,13 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../../screens/bottom_bar_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../wigets/auth_screen/continue_divider.dart';
-import '../../../wigets/landing_screen/guest_button.dart';
-import '../../../wigets/landing_screen/sign_button.dart';
+import '../../screens/auth/login_screen.dart';
+import '../../screens/auth/sign_up_screen.dart';
+import '../../screens/bottom_bar_screen.dart';
 
-import 'login_screen.dart';
-import 'sign_up_screen.dart';
+import '../../wigets/auth_screen/alert_dialog.dart';
+import '../../wigets/auth_screen/continue_divider.dart';
+import '../../wigets/landing_screen/guest_button.dart';
+import '../../wigets/landing_screen/sign_button.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -26,6 +29,7 @@ class _LandingScreenState extends State<LandingScreen>
   ];
   late AnimationController _animationController;
   late Animation<double> _animation;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -53,6 +57,26 @@ class _LandingScreenState extends State<LandingScreen>
   void dispose() {
     _animationController.dispose();
     super.dispose();
+  }
+
+  Future<void> googleSignIn() async {
+    final googleSignIn = GoogleSignIn();
+    final googleAccount = await googleSignIn.signIn();
+    if (googleAccount != null) {
+      final googleAuth = await googleAccount.authentication;
+      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
+        try {
+          final authResult = await _auth.signInWithCredential(
+            GoogleAuthProvider.credential(
+              idToken: googleAuth.idToken,
+              accessToken: googleAuth.accessToken,
+            ),
+          );
+        } catch (error) {
+          ErrorDialogMethod().showDialogMethod(error.toString(), context);
+        }
+      }
+    }
   }
 
   @override
@@ -154,7 +178,9 @@ class _LandingScreenState extends State<LandingScreen>
                   children: [
                     AuthScreenGuestButton(
                       title: "Google +",
-                      onTap: () {},
+                      onTap: () {
+                        googleSignIn();
+                      },
                     ),
                     AuthScreenGuestButton(
                       title: "Login as a Guest",

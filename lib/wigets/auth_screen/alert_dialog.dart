@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AlertDialogMethod {
+class ErrorDialogMethod {
   Future<void> showDialogMethod(
     String subTitle,
     BuildContext context,

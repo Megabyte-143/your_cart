@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.canPop(context) ? Navigator.pop(context) : null,
             );
       } catch (error) {
-        AlertDialogMethod().showDialogMethod(
+        ErrorDialogMethod().showDialogMethod(
           error.toString(),
           context,
         );

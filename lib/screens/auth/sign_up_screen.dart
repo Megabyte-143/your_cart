@@ -57,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Navigator.canPop(context) ? Navigator.pop(context) : null,
             );
       } catch (error) {
-        AlertDialogMethod().showDialogMethod(
+        ErrorDialogMethod().showDialogMethod(
           error.toString(),
           context,
         );
