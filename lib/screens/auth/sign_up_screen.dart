@@ -47,10 +47,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
       _formKey.currentState!.save();
       try {
-        await _auth.createUserWithEmailAndPassword(
-          email: emailAdd.toLowerCase().trim(),
-          password: pass.trim(),
-        );
+        await _auth
+            .createUserWithEmailAndPassword(
+              email: emailAdd.toLowerCase().trim(),
+              password: pass.trim(),
+            )
+            .then(
+              (value) =>
+                  Navigator.canPop(context) ? Navigator.pop(context) : null,
+            );
       } catch (error) {
         AlertDialogMethod().showDialogMethod(
           error.toString(),
@@ -158,7 +163,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           focusNode: _emailNode,
                           key: const ValueKey("Email"),
                           validator: (value) {
-                            if (value!.isEmpty || value.contains('@')) {
+                            if (value!.isEmpty || !value.contains('@')) {
                               return "Please Enter Valid Email Address";
                             }
                             return null;

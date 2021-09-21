@@ -28,7 +28,7 @@ class ProductListProvider with ChangeNotifier {
         brand: 'Samsung ',
         productCategoryName: 'Phones',
         quantity: 1002,
-        isPopular: false),
+        isPopular: false,),
     Product(
         id: 'Samsung Galaxy A51',
         title: 'Samsung Galaxy A51',
@@ -596,7 +596,7 @@ class ProductListProvider with ChangeNotifier {
     final List<Product> categoryList = _products
         .where((element) => element.productCategoryName
             .toLowerCase()
-            .contains(catName.toLowerCase()))
+            .contains(catName.toLowerCase()),)
         .toList();
     return categoryList;
   }

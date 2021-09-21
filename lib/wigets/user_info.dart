@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class UserInfo extends StatelessWidget {
+class UserInfoWidget extends StatelessWidget {
   //const UserInfo({ Key? key }) : super(key: key);
 
   @override

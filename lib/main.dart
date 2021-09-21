@@ -9,7 +9,6 @@ import './provider/dark_theme_provider.dart';
 import './provider/product_list_provider.dart';
 import './provider/wishlist_provider.dart';
 
-import './screens/auth/landing_screen.dart';
 import './screens/auth/login_screen.dart';
 import './screens/auth/sign_up_screen.dart';
 import './screens/bottom_bar_screen.dart';
@@ -20,6 +19,7 @@ import './screens/inner_screen/popular_inner_screen.dart';
 import './screens/product_detail_screen.dart';
 import './screens/upload_product_sceen.dart';
 import './screens/user_info_screen.dart';
+import './screens/user_state_screen.dart';
 import './screens/wishlist/wishlist_screen.dart';
 
 void main() {
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
               return MaterialApp(
                 title: 'Your Cart',
                 theme: Styles.themeData(themeChangeProvider.darkTheme, context),
-                home: const LandingScreen(),
+                home: const UserStateScreen(),
                 routes: {
                   PopularBrandInnerScreen.routeName: (ctx) =>
                       const PopularBrandInnerScreen(),

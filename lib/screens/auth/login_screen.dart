@@ -38,10 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
       });
       _formKey.currentState!.save();
       try {
-        await _auth.signInWithEmailAndPassword(
-          email: _emailAdd.toLowerCase().trim(),
-          password: _pass.trim(),
-        );
+        await _auth
+            .signInWithEmailAndPassword(
+              email: _emailAdd.toLowerCase().trim(),
+              password: _pass.trim(),
+            )
+            .then(
+              (value) =>
+                  Navigator.canPop(context) ? Navigator.pop(context) : null,
+            );
       } catch (error) {
         AlertDialogMethod().showDialogMethod(
           error.toString(),
@@ -87,144 +92,146 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 100),
-                alignment: Alignment.center,
-                height: 150,
-                width: 150,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      'https://scontent.fdel27-2.fna.fbcdn.net/v/t1.6435-9/132190833_108376851168802_522196797208854939_n.jpg?_nc_cat=105&ccb=1-4&_nc_sid=e3f864&_nc_ohc=oxuwMDS0XxgAX--tRRn&_nc_ht=scontent.fdel27-2.fna&oh=a67c367be311efc156d37e65872427f7&oe=6134065A',
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 100),
+                  alignment: Alignment.center,
+                  height: 150,
+                  width: 150,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        'https://scontent.fdel27-2.fna.fbcdn.net/v/t1.6435-9/132190833_108376851168802_522196797208854939_n.jpg?_nc_cat=105&ccb=1-4&_nc_sid=e3f864&_nc_ohc=oxuwMDS0XxgAX--tRRn&_nc_ht=scontent.fdel27-2.fna&oh=a67c367be311efc156d37e65872427f7&oe=6134065A',
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    fit: BoxFit.cover,
+                    color: Colors.black,
                   ),
-                  color: Colors.black,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.all(10),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                const SizedBox(
+                  height: 20,
                 ),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      TextFormField(
-                        key: const ValueKey("Email"),
-                        validator: (value) {
-                          if (value!.isEmpty || value.contains('@')) {
-                            return "Please Enter Valid Email Address";
-                          }
-                          return null;
-                        },
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          fillColor: Colors.white70,
-                          border: UnderlineInputBorder(),
-                          filled: true,
-                          prefixIcon: Icon(Icons.email),
-                          labelText: "Email Address",
-                        ),
-                        onSaved: (value) {
-                          _emailAdd = value.toString();
-                        },
-                        textInputAction: TextInputAction.next,
-                        onEditingComplete: () =>
-                            FocusScope.of(context).requestFocus(_passwordNode),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        key: const ValueKey("Password"),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please Enter Valid Password";
-                          }
-                          return null;
-                        },
-                        obscureText: obscureText,
-                        keyboardType: TextInputType.emailAddress,
-                        focusNode: _passwordNode,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white70,
-                          border: const UnderlineInputBorder(),
-                          filled: true,
-                          prefixIcon: const Icon(Icons.vpn_key),
-                          labelText: "Password",
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                obscureText = !obscureText;
-                              });
-                            },
-                            icon: obscureText
-                                ? const Icon(Icons.visibility)
-                                : const Icon(Icons.visibility_off),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          key: const ValueKey("Email"),
+                          validator: (value) {
+                            if (value!.isEmpty || !value.contains('@')) {
+                              return "Please Enter Valid Email Address";
+                            }
+                            return null;
+                          },
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            fillColor: Colors.white70,
+                            border: UnderlineInputBorder(),
+                            filled: true,
+                            prefixIcon: Icon(Icons.email),
+                            labelText: "Email Address",
                           ),
+                          onSaved: (value) {
+                            _emailAdd = value.toString();
+                          },
+                          textInputAction: TextInputAction.next,
+                          onEditingComplete: () =>
+                              FocusScope.of(context).requestFocus(_passwordNode),
                         ),
-                        onSaved: (value) {
-                          _pass = value.toString();
-                        },
-                        onEditingComplete: submitForm,
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          key: const ValueKey("Password"),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Enter Valid Password";
+                            }
+                            return null;
+                          },
+                          obscureText: obscureText,
+                          keyboardType: TextInputType.emailAddress,
+                          focusNode: _passwordNode,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white70,
+                            border: const UnderlineInputBorder(),
+                            filled: true,
+                            prefixIcon: const Icon(Icons.vpn_key),
+                            labelText: "Password",
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  obscureText = !obscureText;
+                                });
+                              },
+                              icon: obscureText
+                                  ? const Icon(Icons.visibility)
+                                  : const Icon(Icons.visibility_off),
+                            ),
+                          ),
+                          onSaved: (value) {
+                            _pass = value.toString();
+                          },
+                          onEditingComplete: submitForm,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  if (_isLoading)
-                    const CircularProgressIndicator()
-                  else
-                    SignButton(
-                      title: "Login In",
-                      icon: Icons.person,
-                      onTap: () {
-                        submitForm();
-                      },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      width: 10,
                     ),
-                ],
-              ),
-              const SizedBox(
-                height: 150,
-              ),
-              const AuthScreenContinueDivider(
-                color: Colors.black,
-                fontSize: 25,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  AuthScreenGuestButton(
-                    title: "Google +",
-                    onTap: () {},
-                  ),
-                  AuthScreenGuestButton(
-                    title: "Facebook",
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ],
+                    if (_isLoading)
+                      const CircularProgressIndicator()
+                    else
+                      SignButton(
+                        title: "Login In",
+                        icon: Icons.person,
+                        onTap: () {
+                          submitForm();
+                        },
+                      ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 150,
+                ),
+                const AuthScreenContinueDivider(
+                  color: Colors.black,
+                  fontSize: 25,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    AuthScreenGuestButton(
+                      title: "Google +",
+                      onTap: () {},
+                    ),
+                    AuthScreenGuestButton(
+                      title: "Facebook",
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )
         ],
       ),

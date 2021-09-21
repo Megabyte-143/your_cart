@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +7,7 @@ import '../../screens/cart/cart_screen.dart';
 import '../../screens/wishlist/wishlist_screen.dart';
 import '../constant/my_icons.dart';
 import '../provider/dark_theme_provider.dart';
+import '../wigets/alert_dialog.dart';
 import '../wigets/user_info.dart';
 
 class UserInfoScreen extends StatefulWidget {
@@ -20,7 +22,7 @@ class UserInfoScreen extends StatefulWidget {
 class _UserInfoScreenState extends State<UserInfoScreen> {
   late ScrollController _scrollController;
   double top = 0.0;
-
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
     super.initState();
@@ -124,47 +126,48 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: UserInfo().userTitle('User Bag'),
+                    child: UserInfoWidget().userTitle('User Bag'),
                   ),
                   const Divider(
                     thickness: 2,
                   ),
-                  UserInfo().userBagTile('Wishlist', MyIcons.wishList, () {
+                  UserInfoWidget().userBagTile('Wishlist', MyIcons.wishList,
+                      () {
                     route(context, WishlistScreen.routename);
                   }),
-                  UserInfo().userBagTile('Cart', MyIcons.cart, () {
+                  UserInfoWidget().userBagTile('Cart', MyIcons.cart, () {
                     route(context, CartScreen.routename);
                   }),
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: UserInfo().userTitle('User Information'),
+                    child: UserInfoWidget().userTitle('User Information'),
                   ),
                   const Divider(
                     thickness: 2,
                   ),
-                  UserInfo().userTile(
+                  UserInfoWidget().userTile(
                     'Email',
                     'Sub-email',
                     Icons.email,
                   ),
-                  UserInfo().userTile(
+                  UserInfoWidget().userTile(
                     'Phone No.',
                     'Sub-email',
                     Icons.phone,
                   ),
-                  UserInfo().userTile(
+                  UserInfoWidget().userTile(
                     'Shipping Address',
                     'Sub-email',
                     Icons.local_shipping,
                   ),
-                  UserInfo().userTile(
+                  UserInfoWidget().userTile(
                     'Watch Later',
                     'Sub-email',
                     Icons.watch_later,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: UserInfo().userTitle('App Settings'),
+                    child: UserInfoWidget().userTitle('App Settings'),
                   ),
                   const Divider(
                     thickness: 2,
@@ -183,11 +186,19 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.canPop(context)
-                          ? Navigator.of(context).pop()
-                          : null;
+                      // Navigator.canPop(context)
+                      //     ? Navigator.of(context).pop()
+                      //     : null;
+                      AlertDialogMethod().showDialogMethod(
+                        "LOGOUT ?",
+                        "Are you sure, you wanna leave?",
+                        () async {
+                          await _auth.signOut();
+                        },
+                        context,
+                      );
                     },
-                    child: UserInfo().userTile(
+                    child: UserInfoWidget().userTile(
                       'Logout',
                       'Sub-email',
                       Icons.exit_to_app,
@@ -198,7 +209,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
             ),
           ],
         ),
-        UserInfo().userInfoCam(_scrollController),
+        UserInfoWidget().userInfoCam(_scrollController),
       ],
     );
   }

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'auth/landing_screen.dart';
-import 'main_screen.dart';
+import './auth/landing_screen.dart';
+import './main_screens.dart';
 
 class UserStateScreen extends StatelessWidget {
   const UserStateScreen({Key? key}) : super(key: key);
@@ -16,20 +16,15 @@ class UserStateScreen extends StatelessWidget {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (snapshot.connectionState == ConnectionState.active) {
-          if (snapshot.hasData) {
-            MainScreens();
-          } else {
-            const LandingScreen();
-          }
         } else if (snapshot.hasError) {
           return const Center(
             child: Text("Error Ocuured"),
           );
+        } else if (snapshot.hasData) {
+          return MainScreens();
+        } else {
+          return const LandingScreen();
         }
-        return const Center(
-          child: Text("Error Ocuured"),
-        );
       },
     );
   }
