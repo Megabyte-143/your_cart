@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:your_cart/screens/auth/sign_up_screen.dart';
 
 import '../../../wigets/auth_screen/sign_up_screen/pic_dialog_option.dart';
 
@@ -19,7 +20,9 @@ class _SignUpScreenImageHeaderState extends State<SignUpScreenImageHeader> {
     final File pickedImage = File(pickedImagePath!.path);
     setState(() {
       _pickedImage = pickedImage;
+    
     });
+    
     Navigator.of(context).pop();
   }
 
@@ -29,6 +32,7 @@ class _SignUpScreenImageHeaderState extends State<SignUpScreenImageHeader> {
     final File pickedImage = File(pickedImagePath!.path);
     setState(() {
       _pickedImage = pickedImage;
+      
     });
     Navigator.of(context).pop();
   }
@@ -36,6 +40,7 @@ class _SignUpScreenImageHeaderState extends State<SignUpScreenImageHeader> {
   void _removeImage() {
     setState(() {
       _pickedImage = File("assets/images/user.png");
+     
     });
     Navigator.of(context).pop();
   }
@@ -50,7 +55,7 @@ class _SignUpScreenImageHeaderState extends State<SignUpScreenImageHeader> {
             backgroundColor: Colors.orangeAccent,
             child: CircleAvatar(
               radius: 68,
-              backgroundImage: FileImage(_pickedImage),
+              backgroundImage: FileImage(_pickedImage as File),
             ),
           ),
         ),

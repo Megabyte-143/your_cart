@@ -1,9 +1,14 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+import 'package:your_cart/wigets/auth_screen/sign_up_screen/pic_dialog_option.dart';
 
 import '../../wigets/auth_screen/alert_dialog.dart';
 import '../../wigets/auth_screen/continue_divider.dart';
@@ -14,6 +19,7 @@ import '../../wigets/landing_screen/guest_button.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
   static const routeName = "/Sign-Up-Screen";
+  
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -29,7 +35,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late int phnNo;
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final File _pickedImage = File("assets/images/user.png");
+  File _pickedImage = File("assets/images/user.png");
+
+  String? imgUrl;
   bool _isLoading = false;
 
   @override
@@ -41,21 +49,49 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void submitForm() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
+    final date = DateTime.now().toString();
+    final parsedDate = DateTime.parse(date);
+    final formattedDate =
+        "${parsedDate.day}-${parsedDate.month}-${parsedDate.year}";
     if (isValid) {
-      setState(() {
-        _isLoading = true;
-      });
       _formKey.currentState!.save();
       try {
-        await _auth
-            .createUserWithEmailAndPassword(
-              email: emailAdd.toLowerCase().trim(),
-              password: pass.trim(),
-            )
-            .then(
-              (value) =>
-                  Navigator.canPop(context) ? Navigator.pop(context) : null,
-            );
+        if (_pickedImage == File("assets/images/user.png")) {
+          ErrorDialogMethod().showDialogMethod(
+            "Please Pick an Image",
+            context,
+          );
+        } else {
+          setState(() {
+            _isLoading = true;
+          });
+          final ref = FirebaseStorage.instance
+              .ref()
+              .child('usersImage')
+              .child('$name.jpg');
+          await ref.putFile(_pickedImage);
+          imgUrl = await ref.getDownloadURL();
+          await _auth
+              .createUserWithEmailAndPassword(
+                email: emailAdd.toLowerCase().trim(),
+                password: pass.trim(),
+              )
+              .then(
+                (value) =>
+                    Navigator.canPop(context) ? Navigator.pop(context) : null,
+              );
+          final user = _auth.currentUser;
+          final _uid = user!.uid;
+          FirebaseFirestore.instance.collection('users').doc(_uid).set({
+            'id': _uid,
+            'name': name,
+            'email': emailAdd,
+            'phoneNo': phnNo,
+            'imageUrl': imgUrl,
+            'joinedAt': formattedDate,
+            'createdAt': Timestamp.now()
+          });
+        }
       } catch (error) {
         ErrorDialogMethod().showDialogMethod(
           error.toString(),
@@ -68,6 +104,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
         });
       }
     }
+  }
+
+  void _camera() async {
+    final picker = ImagePicker();
+    final pickedImagePath = await picker.pickImage(source: ImageSource.camera);
+    final File pickedImage = File(pickedImagePath!.path);
+    setState(() {
+      _pickedImage = pickedImage;
+    });
+
+    Navigator.of(context).pop();
+  }
+
+  void _gallery() async {
+    final picker = ImagePicker();
+    final pickedImagePath = await picker.pickImage(source: ImageSource.gallery);
+    final File pickedImage = File(pickedImagePath!.path);
+    setState(() {
+      _pickedImage = pickedImage;
+    });
+    Navigator.of(context).pop();
+  }
+
+  void _removeImage() {
+    setState(() {
+      _pickedImage = File("assets/images/user.png");
+    });
+    Navigator.of(context).pop();
   }
 
   @override
@@ -108,7 +172,85 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 60,
                 ),
-                SignUpScreenImageHeader(),
+                Stack(
+                  children: [
+                    Container(
+                      child: CircleAvatar(
+                        radius: 75,
+                        backgroundColor: Colors.orangeAccent,
+                        child: CircleAvatar(
+                          radius: 68,
+                          backgroundImage: FileImage(_pickedImage),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 100,
+                      left: 100,
+                      child: Material(
+                        elevation: 8,
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (ctx) {
+                                return AlertDialog(
+                                  elevation: 20,
+                                  title: const Text(
+                                    "Choose an Option",
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25,
+                                      color: Colors.redAccent,
+                                    ),
+                                  ),
+                                  content: SingleChildScrollView(
+                                    child: ListBody(
+                                      mainAxis: Axis.vertical,
+                                      children: [
+                                        SignUpScreenPicDialofOptions(
+                                          icon: Icons.camera,
+                                          onTap: _camera,
+                                          title: 'Camera',
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        SignUpScreenPicDialofOptions(
+                                          icon: Icons.photo,
+                                          onTap: _gallery,
+                                          title: 'Gallery',
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        SignUpScreenPicDialofOptions(
+                                          icon: Icons.remove_circle,
+                                          onTap: _removeImage,
+                                          title: 'Remove',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: const CircleAvatar(
+                            radius: 25,
+                            child: Icon(
+                              Icons.add_a_photo,
+                              size: 33,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -196,6 +338,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             return null;
                           },
                           keyboardType: TextInputType.phone,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
                           decoration: const InputDecoration(
                             fillColor: Colors.white70,
                             border: UnderlineInputBorder(),
