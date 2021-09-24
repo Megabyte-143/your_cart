@@ -13,7 +13,6 @@ import 'package:your_cart/wigets/auth_screen/sign_up_screen/pic_dialog_option.da
 import '../../wigets/auth_screen/alert_dialog.dart';
 import '../../wigets/auth_screen/continue_divider.dart';
 import '../../wigets/auth_screen/sign_button.dart';
-import '../../wigets/auth_screen/sign_up_screen/image_header.dart';
 import '../../wigets/landing_screen/guest_button.dart';
 
 class SignUpScreen extends StatefulWidget {
