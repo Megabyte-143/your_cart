@@ -30,6 +30,7 @@ class _LandingScreenState extends State<LandingScreen>
   late AnimationController _animationController;
   late Animation<double> _animation;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -76,6 +77,26 @@ class _LandingScreenState extends State<LandingScreen>
           ErrorDialogMethod().showDialogMethod(error.toString(), context);
         }
       }
+    }
+  }
+
+  void anonymosLogin() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      await _auth.signInAnonymously();
+    } catch (error) {
+      ErrorDialogMethod().showDialogMethod(
+        error.toString(),
+        context,
+      );
+      print("error occucered => $error");
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -182,13 +203,14 @@ class _LandingScreenState extends State<LandingScreen>
                         googleSignIn();
                       },
                     ),
-                    AuthScreenGuestButton(
-                      title: "Login as a Guest",
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(BottomBarScreen.routeName);
-                      },
-                    ),
+                    _isLoading
+                        ? const CircularProgressIndicator()
+                        : AuthScreenGuestButton(
+                            title: "Login as a Guest",
+                            onTap: () {
+                              anonymosLogin();
+                            },
+                          ),
                   ],
                 ),
                 const Divider(

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -23,6 +24,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   late ScrollController _scrollController;
   double top = 0.0;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String _uid = '';
+  String _name = '';
+  String _email = '';
+  String _joinedAt = '';
+  String _phoneNumber = '';
+  String _userImageUrl = 'https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png';
   @override
   void initState() {
     super.initState();
@@ -30,6 +37,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     _scrollController.addListener(() {
       setState(() {});
     });
+    getData();
   }
 
   void route(
@@ -37,6 +45,22 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     String routeName,
   ) {
     Navigator.of(ctx).pushNamed(routeName);
+  }
+
+  void getData() async {
+    final User? user = _auth.currentUser;
+
+    _uid = user!.uid;
+    final DocumentSnapshot userDoc =
+        await FirebaseFirestore.instance.collection('users').doc(_uid).get();
+    if (user.isAnonymous) return;
+    setState(() {
+      _name = userDoc.get('name').toString();
+      _email = user.email!;
+      _joinedAt = userDoc.get('joinedAt').toString();
+      _phoneNumber = userDoc.get('phoneNo').toString();
+      _userImageUrl = userDoc.get('imageUrl').toString();
+    });
   }
 
   @override
@@ -85,21 +109,19 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                                 Container(
                                   height: kToolbarHeight / 2,
                                   width: kToolbarHeight / 2,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
-                                      image: AssetImage(
-                                        'assets/images/user.png',
-                                      ),
+                                      image: NetworkImage(_userImageUrl),
                                     ),
                                   ),
                                 ),
                                 const SizedBox(
                                   width: 12,
                                 ),
-                                const Text(
-                                  'Guest',
+                                Text(
+                                  _name,
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.white,
@@ -110,8 +132,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           )
                         ],
                       ),
-                      background: const Image(
-                        image: AssetImage('assets/images/user.png'),
+                      background: Image(
+                        image: NetworkImage(_userImageUrl),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -147,12 +169,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   ),
                   UserInfoWidget().userTile(
                     'Email',
-                    'Sub-email',
+                    _email,
                     Icons.email,
                   ),
                   UserInfoWidget().userTile(
                     'Phone No.',
-                    'Sub-email',
+                    _phoneNumber,
                     Icons.phone,
                   ),
                   UserInfoWidget().userTile(
@@ -161,8 +183,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     Icons.local_shipping,
                   ),
                   UserInfoWidget().userTile(
-                    'Watch Later',
-                    'Sub-email',
+                    'Joined Date',
+                    _joinedAt,
                     Icons.watch_later,
                   ),
                   Padding(

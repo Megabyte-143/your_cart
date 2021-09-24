@@ -19,7 +19,7 @@ import '../../wigets/landing_screen/guest_button.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
   static const routeName = "/Sign-Up-Screen";
-  
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -81,7 +81,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Navigator.canPop(context) ? Navigator.pop(context) : null,
               );
           final user = _auth.currentUser;
-          final _uid = user!.uid;
+          user!.updateDisplayName(name);
+          user.updatePhotoURL(imgUrl);
+          user.reload();
+          final _uid = user.uid;
           FirebaseFirestore.instance.collection('users').doc(_uid).set({
             'id': _uid,
             'name': name,
