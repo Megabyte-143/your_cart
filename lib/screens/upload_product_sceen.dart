@@ -1,9 +1,14 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
+
+import '../wigets/auth_screen/alert_dialog.dart';
 
 class UploadProductScreen extends StatefulWidget {
   static const routeName = '/UploadProductForm';
@@ -14,7 +19,7 @@ class UploadProductScreen extends StatefulWidget {
 
 class _UploadProductScreenState extends State<UploadProductScreen> {
   final _formKey = GlobalKey<FormState>();
-
+  Uuid uuid = const Uuid();
   var _productTitle = '';
   var _productPrice = '';
   var _productCategory = '';
@@ -25,8 +30,11 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
   final TextEditingController _brandController = TextEditingController();
   String? _categoryValue;
   String? _brandValue;
+  bool _isLoading = false;
+  File _pickedImage = File("assets/images/user.png");
+  String? imgUrl;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  File? _pickedImage;
   showAlertDialog(BuildContext context, String title, String body) {
     // show the dialog
     showDialog(
@@ -48,7 +56,7 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
     );
   }
 
-  void _trySubmit() {
+  void _trySubmit() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
 
@@ -61,6 +69,54 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
       print(_productDescription);
       print(_productQuantity);
       // Use those values to send our auth request ...
+    }
+    if (isValid) {
+      _formKey.currentState!.save();
+      try {
+        if (_pickedImage == File("assets/images/user.png")) {
+          ErrorDialogMethod().showDialogMethod(
+            "Please Pick an Image",
+            context,
+          );
+        } else {
+          setState(() {
+            _isLoading = true;
+          });
+          final ref = FirebaseStorage.instance
+              .ref()
+              .child('productsImage')
+              .child('$_productTitle.jpg');
+          await ref.putFile(_pickedImage);
+          imgUrl = await ref.getDownloadURL();
+
+          final user = _auth.currentUser;
+          final _uid = user!.uid;
+
+          final productID = uuid.v4();
+          FirebaseFirestore.instance.collection('products').doc(productID).set({
+            'productID': productID,
+            'productTitle': _productTitle,
+            'productPrice': _productPrice,
+            'productCategory': _productCategory,
+            'productBrand': _productBrand,
+            'productDescription': _productDescription,
+            'productQuantity': _productQuantity,
+            'imgUrl':imgUrl,
+            'userID': _uid,
+            'createdAt': Timestamp.now(),
+          });
+        }
+      } catch (error) {
+        ErrorDialogMethod().showDialogMethod(
+          error.toString(),
+          context,
+        );
+        print("error occucered => $error");
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -83,7 +139,9 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
       source: ImageSource.gallery,
       imageQuality: 50,
     );
-    final pickedImageFile = pickedImage == null ? null : File(pickedImage.path);
+    final pickedImageFile = pickedImage == File("assets/images/user.png")
+        ? File("assets/images/user.png")
+        : File(pickedImage!.path);
 
     setState(() {
       _pickedImage = pickedImageFile;
@@ -93,7 +151,7 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
 
   void _removeImage() {
     setState(() {
-      _pickedImage = null;
+      _pickedImage = File("assets/images/user.png");
     });
   }
 
@@ -117,35 +175,37 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
           child: InkWell(
             onTap: _trySubmit,
             splashColor: Colors.grey,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(right: 2),
-                  child: Text(
-                    'Upload',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                GradientIcon(
-                  Icons.upload,
-                  20,
-                  LinearGradient(
-                    colors: <Color>[
-                      Colors.green,
-                      Colors.yellow,
-                      Colors.deepOrange,
-                      Colors.orange,
-                      Colors.yellow.shade800
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      const Padding(
+                        padding: EdgeInsets.only(right: 2),
+                        child: Text(
+                          'Upload',
+                          style: TextStyle(fontSize: 16),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      GradientIcon(
+                        Icons.upload,
+                        20,
+                        LinearGradient(
+                          colors: <Color>[
+                            Colors.green,
+                            Colors.yellow,
+                            Colors.deepOrange,
+                            Colors.orange,
+                            Colors.yellow.shade800
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
                     ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
                   ),
-                ),
-              ],
-            ),
           ),
         ),
       ),
@@ -229,7 +289,8 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
                           children: <Widget>[
                             Expanded(
                               //  flex: 2,
-                              child: _pickedImage == null
+                              child: _pickedImage ==
+                                      File("assets/images/user.png")
                                   ? Container(
                                       margin: const EdgeInsets.all(10),
                                       height: 200,
@@ -256,7 +317,7 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
                                               Theme.of(context).backgroundColor,
                                         ),
                                         child: Image.file(
-                                          _pickedImage!,
+                                          _pickedImage,
                                           fit: BoxFit.contain,
                                           alignment: Alignment.center,
                                         ),
