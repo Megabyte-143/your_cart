@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
 import '../wigets/auth_screen/alert_dialog.dart';
+import 'bottom_bar_screen.dart';
 
 class UploadProductScreen extends StatefulWidget {
   static const routeName = '/UploadProductForm';
@@ -101,10 +102,13 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
             'productBrand': _productBrand,
             'productDescription': _productDescription,
             'productQuantity': _productQuantity,
-            'imgUrl':imgUrl,
+            'imgUrl': imgUrl,
             'userID': _uid,
             'createdAt': Timestamp.now(),
-          });
+          }).then(
+            (value) =>
+                Navigator.popAndPushNamed(context, BottomBarScreen.routeName),
+          );
         }
       } catch (error) {
         ErrorDialogMethod().showDialogMethod(

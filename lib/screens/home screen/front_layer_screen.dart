@@ -24,7 +24,8 @@ class _HomeScreenFrontLayerState extends State<HomeScreenFrontLayer> {
   @override
   Widget build(BuildContext context) {
     final ProductListProvider _popularProducts =
-        Provider.of<ProductListProvider>(context,listen: false);
+        Provider.of<ProductListProvider>(context, listen: false);
+    _popularProducts.FetchProducts();
     final List<Product> popularProducts = _popularProducts.findByPopularity();
     return Scaffold(
       backgroundColor: Colors.grey.shade900,
