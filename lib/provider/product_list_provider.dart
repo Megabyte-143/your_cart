@@ -591,7 +591,7 @@ class ProductListProvider with ChangeNotifier {
     return [..._products];
   }
 
-  Future<void> FetchProducts() async {
+  Future<void> fetchProducts() async {
     await FirebaseFirestore.instance
         .collection('products')
         .get()
@@ -630,11 +630,11 @@ class ProductListProvider with ChangeNotifier {
   }
 
   List<Product> findByBrand(String brandName) {
-    print("provider: " + brandName);
+    print("provider: $brandName");
 
     final List<Product> brandList = _products
         .where((element) =>
-            element.brand.toLowerCase().contains(brandName.toLowerCase()))
+            element.brand.toLowerCase().contains(brandName.toLowerCase()),)
         .toList();
     return brandList;
   }
@@ -652,7 +652,7 @@ class ProductListProvider with ChangeNotifier {
   List<Product> findBySearch(String searchText) {
     final List<Product> searchList = _products
         .where((element) =>
-            element.title.toLowerCase().contains(searchText.toLowerCase()))
+            element.title.toLowerCase().contains(searchText.toLowerCase()),)
         .toList();
     return searchList;
   }
