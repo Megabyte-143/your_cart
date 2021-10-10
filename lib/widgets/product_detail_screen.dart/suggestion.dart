@@ -5,7 +5,7 @@ import '../../models/product.dart';
 
 import '../../provider/product_list_provider.dart';
 
-import '../../wigets/feeds_screen/feeds_screen_items.dart';
+import '../../widgets/feeds_screen/feeds_screen_items.dart';
 
 class ProductDetailScreenSuggestions extends StatelessWidget {
   const ProductDetailScreenSuggestions({Key? key, required this.catName})
