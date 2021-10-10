@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:your_cart/screens/auth/sign_up_screen.dart';
 
-import '../../../wigets/auth_screen/sign_up_screen/pic_dialog_option.dart';
+import '../../../widgets/auth_screen/sign_up_screen/pic_dialog_option.dart';
 
 class SignUpScreenImageHeader extends StatefulWidget {
   @override

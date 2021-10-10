@@ -6,7 +6,7 @@ import '../../models/product.dart';
 
 import '../../provider/product_list_provider.dart';
 
-import '../../wigets/inner_screen/category/category_feeds_items.dart';
+import '../../widgets/inner_screen/category/category_feeds_items.dart';
 
 class CategoryInnerScreen extends StatelessWidget {
   static const routeName = '/category-inner-screen';

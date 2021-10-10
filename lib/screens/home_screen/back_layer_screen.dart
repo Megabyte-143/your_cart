@@ -5,11 +5,11 @@ import '../../constant/my_icons.dart';
 
 import '../../provider/dark_theme_provider.dart';
 
-import '../../wigets/home_screen/layers/back_layer/button.dart';
-import '../../wigets/home_screen/layers/back_layer/user_image.dart';
+import '../../widgets/home_screen/layers/back_layer/button.dart';
+import '../../widgets/home_screen/layers/back_layer/user_image.dart';
 
 import '../cart/cart_screen.dart';
-import '../feeds screen/feeds_screen.dart';
+import '../feeds_screen/feeds_screen.dart';
 import '../upload_product_sceen.dart';
 import '../wishlist/wishlist_screen.dart';
 

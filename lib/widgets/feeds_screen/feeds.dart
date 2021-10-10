@@ -5,7 +5,7 @@ import '../../models/product.dart';
 
 import '../../screens/product_detail_screen.dart';
 
-import '../../wigets/feeds_screen/dialog.dart';
+import '../../widgets/feeds_screen/dialog.dart';
 
 class Feeds extends StatelessWidget {
   const Feeds({

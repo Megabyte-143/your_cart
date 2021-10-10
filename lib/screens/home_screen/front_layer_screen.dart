@@ -5,13 +5,13 @@ import '../../models/product.dart';
 
 import '../../provider/product_list_provider.dart';
 
-import '../../wigets/home_screen/layers/front_layer/carousel.dart';
-import '../../wigets/home_screen/layers/front_layer/categories/categories.dart';
-import '../../wigets/home_screen/layers/front_layer/categories/categories_text.dart';
-import '../../wigets/home_screen/layers/front_layer/popular/popular.dart';
-import '../../wigets/home_screen/layers/front_layer/popular/popular_text.dart';
-import '../../wigets/home_screen/layers/front_layer/popular_products/popular_products.dart';
-import '../../wigets/home_screen/layers/front_layer/popular_products/popular_products_text.dart';
+import '../../widgets/home_screen/layers/front_layer/carousel.dart';
+import '../../widgets/home_screen/layers/front_layer/categories/categories.dart';
+import '../../widgets/home_screen/layers/front_layer/categories/categories_text.dart';
+import '../../widgets/home_screen/layers/front_layer/popular/popular.dart';
+import '../../widgets/home_screen/layers/front_layer/popular/popular_text.dart';
+import '../../widgets/home_screen/layers/front_layer/popular_products/popular_products.dart';
+import '../../widgets/home_screen/layers/front_layer/popular_products/popular_products_text.dart';
 
 class HomeScreenFrontLayer extends StatefulWidget {
   const HomeScreenFrontLayer({Key? key}) : super(key: key);

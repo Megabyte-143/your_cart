@@ -8,10 +8,10 @@ import '../../screens/auth/login_screen.dart';
 import '../../screens/auth/sign_up_screen.dart';
 import '../../screens/bottom_bar_screen.dart';
 
-import '../../wigets/auth_screen/alert_dialog.dart';
-import '../../wigets/auth_screen/continue_divider.dart';
-import '../../wigets/landing_screen/guest_button.dart';
-import '../../wigets/landing_screen/sign_button.dart';
+import '../../widgets/auth_screen/alert_dialog.dart';
+import '../../widgets/auth_screen/continue_divider.dart';
+import '../../widgets/landing_screen/guest_button.dart';
+import '../../widgets/landing_screen/sign_button.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);

@@ -8,8 +8,8 @@ import '../../screens/cart/cart_screen.dart';
 import '../../screens/wishlist/wishlist_screen.dart';
 import '../constant/my_icons.dart';
 import '../provider/dark_theme_provider.dart';
-import '../wigets/alert_dialog.dart';
-import '../wigets/user_info.dart';
+import '../widgets/alert_dialog.dart';
+import '../widgets/user_info.dart';
 
 class UserInfoScreen extends StatefulWidget {
   //const UserInfoScreen({Key? key}) : super(key: key);

@@ -9,13 +9,13 @@ import '../provider/cart_provider.dart';
 import '../provider/product_list_provider.dart';
 import '../provider/wishlist_provider.dart';
 
-import '../wigets/product_detail_screen.dart/bottom_bar.dart';
-import '../wigets/product_detail_screen.dart/double_icons.dart';
-import '../wigets/product_detail_screen.dart/icons1.dart';
-import '../wigets/product_detail_screen.dart/image.dart';
-import '../wigets/product_detail_screen.dart/points_description.dart';
-import '../wigets/product_detail_screen.dart/review.dart';
-import '../wigets/product_detail_screen.dart/suggestion.dart';
+import '../widgets/product_detail_screen.dart/bottom_bar.dart';
+import '../widgets/product_detail_screen.dart/double_icons.dart';
+import '../widgets/product_detail_screen.dart/icons1.dart';
+import '../widgets/product_detail_screen.dart/image.dart';
+import '../widgets/product_detail_screen.dart/points_description.dart';
+import '../widgets/product_detail_screen.dart/review.dart';
+import '../widgets/product_detail_screen.dart/suggestion.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({Key? key}) : super(key: key);

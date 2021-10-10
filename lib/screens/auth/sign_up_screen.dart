@@ -8,12 +8,12 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-import 'package:your_cart/wigets/auth_screen/sign_up_screen/pic_dialog_option.dart';
 
-import '../../wigets/auth_screen/alert_dialog.dart';
-import '../../wigets/auth_screen/continue_divider.dart';
-import '../../wigets/auth_screen/sign_button.dart';
-import '../../wigets/landing_screen/guest_button.dart';
+import '../../widgets/auth_screen/alert_dialog.dart';
+import '../../widgets/auth_screen/continue_divider.dart';
+import '../../widgets/auth_screen/sign_button.dart';
+import '../../widgets/auth_screen/sign_up_screen/pic_dialog_option.dart';
+import '../../widgets/landing_screen/guest_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);

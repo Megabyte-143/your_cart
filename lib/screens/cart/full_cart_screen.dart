@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../../provider/cart_provider.dart';
 import '../../provider/dark_theme_provider.dart';
 
-import '../../wigets/alert_dialog.dart';
-import '../../wigets/full_cart_screen/bottom_sheet.dart' as bottom_sheet;
-import '../../wigets/full_cart_screen/full_cart_icons.dart';
-import '../../wigets/full_cart_screen/full_cart_items.dart';
+import '../../widgets/alert_dialog.dart';
+import '../../widgets/full_cart_screen/bottom_sheet.dart' as bottom_sheet;
+import '../../widgets/full_cart_screen/full_cart_icons.dart';
+import '../../widgets/full_cart_screen/full_cart_items.dart';
 
 class FullCartScreen extends StatefulWidget {
   const FullCartScreen({Key? key, required this.cartListLength})

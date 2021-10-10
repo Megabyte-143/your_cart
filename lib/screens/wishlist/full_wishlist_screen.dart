@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../../provider/dark_theme_provider.dart';
 import '../../provider/wishlist_provider.dart';
 
-import '../../wigets/alert_dialog.dart';
-import '../../wigets/full_wishlist_screen/items.dart';
+import '../../widgets/alert_dialog.dart';
+import '../../widgets/full_wishlist_screen/items.dart';
 
 class FullWishlistScreen extends StatelessWidget {
   const FullWishlistScreen({Key? key}) : super(key: key);

@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
-import '../wigets/auth_screen/alert_dialog.dart';
+import '../widgets/auth_screen/alert_dialog.dart';
 import 'bottom_bar_screen.dart';
 
 class UploadProductScreen extends StatefulWidget {

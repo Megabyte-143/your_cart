@@ -10,7 +10,7 @@ import '../../screens/cart/cart_screen.dart';
 import '../../screens/user_info_screen.dart';
 import '../../screens/wishlist/wishlist_screen.dart';
 
-import '../../wigets/product_detail_screen.dart/icons1.dart';
+import '../../widgets/product_detail_screen.dart/icons1.dart';
 
 class SearchHeader extends SliverPersistentHeaderDelegate {
   SearchHeader({

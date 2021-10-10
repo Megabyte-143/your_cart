@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import '../../wigets/auth_screen/alert_dialog.dart';
-import '../../wigets/auth_screen/continue_divider.dart';
-import '../../wigets/auth_screen/sign_button.dart';
-import '../../wigets/landing_screen/guest_button.dart';
+import '../../widgets/auth_screen/alert_dialog.dart';
+import '../../widgets/auth_screen/continue_divider.dart';
+import '../../widgets/auth_screen/sign_button.dart';
+import '../../widgets/landing_screen/guest_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

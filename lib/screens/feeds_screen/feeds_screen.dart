@@ -10,8 +10,8 @@ import '../../provider/cart_provider.dart';
 import '../../provider/product_list_provider.dart';
 import '../../provider/wishlist_provider.dart';
 
-import '../../wigets/feeds_screen/feeds_screen_items.dart';
-import '../../wigets/product_detail_screen.dart/icons1.dart';
+import '../../widgets/feeds_screen/feeds_screen_items.dart';
+import '../../widgets/product_detail_screen.dart/icons1.dart';
 
 class FeedsScreen extends StatelessWidget {
   static const routeName = '/feeds-screen';

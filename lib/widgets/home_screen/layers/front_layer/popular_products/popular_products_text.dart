@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../screens/feeds screen/feeds_screen.dart';
+import '../../../../../screens/feeds_screen/feeds_screen.dart';
 
 
 class HomeScreenPopularProductsText extends StatelessWidget {

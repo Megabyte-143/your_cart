@@ -3,9 +3,9 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:your_cart/models/product.dart';
 import 'package:your_cart/provider/product_list_provider.dart';
-import 'package:your_cart/wigets/feeds_screen/feeds_screen_items.dart';
-import 'package:your_cart/wigets/search_screen/search_header.dart';
-import 'package:your_cart/wigets/search_screen/search_items.dart';
+import 'package:your_cart/widgets/feeds_screen/feeds_screen_items.dart';
+import 'package:your_cart/widgets/search_screen/search_header.dart';
+import 'package:your_cart/widgets/search_screen/search_items.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
